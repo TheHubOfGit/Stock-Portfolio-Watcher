@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Added Chart.js -->
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="theme-switcher">
+            <input type="checkbox" id="theme-toggle">
+            <label for="theme-toggle" class="slider"></label>
+        </div>
+        <h1>Real-Time Stock Dashboard</h1>
+        <div class="header-controls">
+             <div class="filter-control">
+                 <label for="change-period">Change Period:</label>
+                 <select id="change-period">
+                     <option value="1d" selected>1D</option>
+                     <option value="1w">1W</option>
+                     <option value="1m">1M</option>
+                     <option value="3m">3M</option>
+                     <option value="6m">6M</option>
+                     <option value="1y">1Y</option>
+                     <option value="4y">4Y</option>
+                     <option value="5y">5Y</option>
+                 </select>
+             </div>
+             <div class="filter-control">
+                 <label for="drawdown-period">Drawdown Period:</label>
+                 <select id="drawdown-period">
+                     <option value="1w">1W</option>
+                     <option value="1m">1M</option>
+                     <option value="3m">3M</option>
+                     <option value="6m">6M</option>
+                     <option value="1y" selected>1Y</option>
+                     <option value="2y">2Y</option>
+                     <option value="3y">3Y</option>
+                     <option value="4y">4Y</option>
+                     <option value="5y">5Y</option>
+                 </select>
+             </div>
+             <div class="refresh-container"> <!-- Wrapper div -->
+                 <button id="refresh-btn">Refresh Now</button>
+                 <span id="refresh-spinner" class="button-spinner" style="display: none;"></span>
+             </div>
+             <p id="last-updated">Last Updated: Never</p>
+             <!-- Removed loading status and progress bar elements -->
+        </div>
+    </header>
+
+    <main>
+        <table id="stock-table">
+            <thead>
+                <tr>
+                    <th data-sort-key="name" title="Stock ticker symbol or identifier">Symbol</th>
+                    <th data-sort-key="type" title="Asset type (e.g., Stock, ETF, Crypto)">Type</th>
+                    <th data-sort-key="latest_price" title="Latest available trading price">Price</th>
+                    <th data-sort-key="daily_change_pct" title="Percentage price change over the selected 'Change Period'">Change %</th>
+                    <th title="Recent price trend (last 30 days)">Trend</th> <!-- Sparkline Header -->
+                    <th data-sort-key="rsi14" title="Relative Strength Index (14-period). Values > 70 indicate overbought, < 30 indicate oversold.">RSI</th>
+                    <th data-sort-key="rsi_status" title="Indicates if RSI is Oversold (<30) or Undersold (>70)">RSI Status</th>
+                    <th data-sort-key="ema13">EMA 13</th>
+                    <th data-sort-key="ema21">EMA 21</th>
+                    <th data-sort-key="ema_signal">Signal (S)</th>
+                    <th data-sort-key="duration-short">Duration (S)</th>
+                    <th data-sort-key="ema50">EMA 50</th>
+                    <th data-sort-key="ema200">EMA 200</th>
+                    <th data-sort-key="ema_long_signal">Signal (L)</th>
+                    <th data-sort-key="duration-long">Duration (L)</th>
+                    <th data-sort-key="current_drawdown_pct">Drawdown %</th>
+                    <!-- Removed Last Update column -->
+                </tr>
+            </thead>
+            <tbody id="stock-table-body">
+                <!-- Stock data rows will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>Data provided by yfinance. Updates approximately every minute.</p>
+    </footer>
+
+    <!-- Pop-up Chart Container -->
+    <div id="popup-chart-container" class="chart-popup">
+        <div id="chart-overlay-text" class="chart-overlay"></div> <!-- Added overlay text div -->
+        <canvas id="relative-perf-chart"></canvas>
+    </div>
+
+</body>
+</html>

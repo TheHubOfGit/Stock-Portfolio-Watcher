@@ -1,0 +1,632 @@
+/* Theme Variables */
+:root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --text-muted-color: #aaaaaa;
+    --header-bg: #333333;
+    --header-text: #ffffff;
+    --table-bg: #1e1e1e;
+    --table-bg-rgb: 30, 30, 30; /* RGB for dark table background */
+    --table-border: #444444;
+    --table-row-hover-bg: #2a2a2a;
+    --group-header-bg: #4a4a4a;
+    --group-header-text: #ffffff;
+    --group-header-border: #666666;
+    --select-bg: #333333;
+    --select-text: #e0e0e0;
+    --select-border: #555555;
+    --positive-color: #4caf50;
+    --negative-color: #f44336;
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+    --switch-bg: #555; /* Darker switch background */
+    --switch-slider-bg: #ccc; /* Lighter slider */
+    --switch-checked-bg: #007bff;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --sort-arrow-color: #cccccc;
+    --loading-color: #00bcd4;
+    --positive-bg-color: rgba(76, 175, 80, 0.15); /* Subtle green background for Buy */
+    --negative-bg-color: rgba(244, 67, 54, 0.15); /* Subtle red background for Sell */
+}
+
+body.light-theme {
+    --bg-color: #f4f4f4;
+    --text-color: #333333;
+    --text-muted-color: #666666;
+    --header-bg: #e0e0e0;
+    --header-text: #333333;
+    --table-bg: #ffffff;
+    --table-bg-rgb: 255, 255, 255; /* RGB for light table background */
+    --table-border: #dddddd;
+    --table-row-hover-bg: #f0f0f0;
+    --group-header-bg: #e9e9e9;
+    --group-header-text: #333333;
+    --group-header-border: #cccccc;
+    --select-bg: #ffffff;
+    --select-text: #333333;
+    --select-border: #cccccc;
+    --positive-color: #28a745;
+    --negative-color: #dc3545;
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+    --switch-bg: #ccc;
+    --switch-slider-bg: #fff;
+    --switch-checked-bg: #007bff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --sort-arrow-color: #666666;
+    --loading-color: #007bff;
+    --positive-bg-color: rgba(40, 167, 69, 0.15); /* Subtle green background for Buy */
+    --negative-bg-color: rgba(220, 53, 69, 0.1);  /* Subtle red background for Sell */
+}
+
+
+/* Basic Reset & Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+    overscroll-behavior-y: none; /* Prevent vertical overscroll bounce */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    position: relative; /* Needed for absolute positioning of the switch */
+    text-align: center;
+    margin-bottom: 0rem;
+    color: var(--text-muted-color);
+    padding: 1rem;
+    flex-shrink: 0; /* prevent header from shrinking */
+    padding-bottom: 0rem;
+}
+
+main {
+    flex: 1; /* take up remaining space */
+    overflow: hidden;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: var(--text-muted-color);
+    flex-shrink: 0; /* prevent footer from shrinking */
+    margin-top: auto; /* push footer to bottom */
+}
+
+header h1 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700; /* Using bold weight for title */
+    font-style: normal;
+    color: var(--header-text); /* Keep existing color */
+    background-color: var(--table-bg); /* Use table background for card effect */
+    padding: 0.5rem 1.5rem; /* Add padding around the text */
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 2px 4px var(--shadow-color); /* Add a subtle shadow */
+    display: inline-block; /* Make it wrap the content */
+    margin-bottom: 0rem; /* Adjust margin if needed */
+}
+
+/* Wrapper for refresh button and spinner */
+.refresh-container {
+    display: inline-flex; /* Use flex to align button and spinner */
+    align-items: center; /* Vertically align items */
+    gap: 0.5em; /* Space between button and spinner */
+    margin-left: 1rem; /* Keep original left margin */
+}
+
+#refresh-btn {
+    /* Reverted: Removed position and padding-right */
+    padding: 0.5rem 1rem;
+    /* margin-left: 1rem; Removed, handled by container */
+    cursor: pointer;
+    background-color: var(--link-color);
+    color: var(--header-text);
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+#refresh-btn:hover {
+    background-color: var(--link-hover-color);
+}
+
+/* Button Spinner Styles - Pulsing Dots */
+.button-spinner {
+  display: inline-block; /* Reverted */
+  width: auto; /* Let dots determine width */
+  height: 1em; /* Match button font height */
+  /* Removed border properties */
+  vertical-align: middle; /* Reverted */
+  line-height: 1; /* Ensure dots align well */
+}
+
+.button-spinner::after { /* Use pseudo-element for dots */
+    content: ' . . .'; /* Three dots with spaces */
+    display: inline-block;
+    animation: button-pulse 1.4s infinite ease-in-out both;
+    color: currentColor; /* Inherit color from button */
+    font-weight: bold;
+}
+
+@keyframes button-pulse {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+#last-updated {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    color: var(--text-muted-color);
+}
+
+#loading-status {
+    font-style: italic;
+    color: var(--loading-color);
+    margin-bottom: 0.5rem; /* Add some space below the text */
+}
+
+/* Progress Bar Styling */
+#progress-bar-container {
+    width: 200px; /* Adjust width as needed */
+    height: 10px; /* Adjust height as needed */
+    background-color: var(--table-border); /* Use a subtle background */
+    border-radius: 5px;
+    overflow: hidden; /* Ensure inner bar stays within bounds */
+    margin: 0 auto 1rem auto; /* Center horizontally and add margin below */
+    display: block; /* Make it a block element for centering */
+}
+
+#progress-bar {
+    width: 100%; /* Full width for animation */
+    height: 100%;
+    background-color: #007bff; /* Use specific blue */
+    border-radius: 5px;
+    /* Remove width transition, use animation instead */
+    animation: indeterminate-progress 1.5s infinite linear;
+}
+
+/* Indeterminate Progress Bar Animation */
+@keyframes indeterminate-progress {
+    0% {
+        transform: translateX(-100%);
+        background: linear-gradient(90deg, transparent, #007bff, transparent);
+    }
+    50% {
+         background: linear-gradient(90deg, transparent, #007bff, #007bff, transparent);
+    }
+    100% {
+        transform: translateX(100%);
+        background: linear-gradient(90deg, transparent, #007bff, transparent);
+    }
+}
+
+/* Table Styling - Data Dense */
+#stock-table {
+    width: 100%;
+    border-collapse: separate; /* Changed from collapse to support sticky header */
+    border-spacing: 0; /* Ensure no gaps between cells */
+    margin: 0 auto;
+    background-color: var(--table-bg);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    font-size: 0.9rem; /* Smaller font for density */
+    border-radius: 8px; /* Add rounded corners */
+    overflow: hidden; /* Ensure content respects rounded corners */
+    table-layout: fixed; /* For better control over column widths */
+    flex: 1; /* take up remaining space in main */
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* allow table to shrink if needed */
+}
+
+#stock-table thead {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Ensure headers stay above table content */
+    display: table; /* Change from block to table for proper alignment */
+    width: 100%; /* Ensure it takes full width */
+    table-layout: fixed; /* Match table-layout with the table */
+    flex-shrink: 0; /* prevent header from shrinking */
+}
+
+#stock-table thead th {
+    /* Add bottom border to create visual separation */
+    border-bottom: 2px solid var(--table-border);
+    /* Add box-shadow as a more visible separator */
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+#stock-table tbody {
+    /* Set the tbody to display as table */
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden; /* Prevent horizontal scrolling in tbody */
+    /* Ensures a nice scrollbar appearance */
+    scrollbar-width: thin;
+    scrollbar-color: var(--table-border) var(--table-bg);
+    flex: 1; /* take up remaining space */
+}
+
+/* For webkit browsers like Chrome/Safari */
+#stock-table tbody::-webkit-scrollbar {
+    width: 8px;
+}
+
+#stock-table tbody::-webkit-scrollbar-track {
+    background: var(--table-bg);
+}
+
+#stock-table tbody::-webkit-scrollbar-thumb {
+    background-color: var(--table-border);
+    border-radius: 4px;
+}
+
+/* Make all rows display as a table for proper row formatting */
+#stock-table thead tr,
+#stock-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+/* Adjust width for tbody rows to account for scrollbar */
+#stock-table tbody tr {
+    width: calc(100% - 8px); /* Subtract scrollbar width */
+}
+
+/* Set column widths for proper alignment */
+#stock-table th,
+#stock-table td {
+    padding: 0.4rem 0.6rem; /* Compact padding */
+    text-align: right; /* Align numbers to the right */
+    border-bottom: 1px solid var(--table-border);
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Prevent overflow */
+    text-overflow: ellipsis; /* Add ellipsis for text overflow */
+    /* Smooth transitions for data updates */
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Specific column widths for better alignment */
+#stock-table th:nth-child(1), #stock-table td:nth-child(1) { width: 8%; } /* Symbol */
+#stock-table th:nth-child(2), #stock-table td:nth-child(2) { width: 6%; } /* Type */
+#stock-table th:nth-child(3), #stock-table td:nth-child(3) { width: 6%; } /* Price */
+#stock-table th:nth-child(4), #stock-table td:nth-child(4) { width: 6%; } /* Change % */
+#stock-table th:nth-child(5), #stock-table td:nth-child(5) { width: 8%; } /* Trend */
+#stock-table th:nth-child(6), #stock-table td:nth-child(6) { width: 5%; } /* RSI */
+#stock-table th:nth-child(7), #stock-table td:nth-child(7) { width: 7%; } /* RSI Status */
+#stock-table th:nth-child(8), #stock-table td:nth-child(8) { width: 6%; } /* EMA 13 */
+#stock-table th:nth-child(9), #stock-table td:nth-child(9) { width: 6%; } /* EMA 21 */
+#stock-table th:nth-child(10), #stock-table td:nth-child(10) { width: 6%; } /* Signal (S) */
+#stock-table th:nth-child(11), #stock-table td:nth-child(11) { width: 7%; } /* Duration (S) */
+#stock-table th:nth-child(12), #stock-table td:nth-child(12) { width: 6%; } /* EMA 50 */
+#stock-table th:nth-child(13), #stock-table td:nth-child(13) { width: 6%; } /* EMA 200 */
+#stock-table th:nth-child(14), #stock-table td:nth-child(14) { width: 6%; } /* Signal (L) */
+#stock-table th:nth-child(15), #stock-table td:nth-child(15) { width: 7%; } /* Duration (L) */
+#stock-table th:nth-child(16), #stock-table td:nth-child(16) { width: 6%; } /* Drawdown % */
+
+#stock-table th[data-sort-key] { /* Make sortable headers clickable */
+    cursor: pointer;
+}
+
+#stock-table th[data-sort-key]:hover {
+    background-color: var(--table-border); /* Use border color for subtle hover */
+}
+
+#stock-table th:first-child,
+#stock-table td:first-child,
+#stock-table th:nth-child(2), /* Type column */
+#stock-table td:nth-child(2) {
+    text-align: left; /* Align symbol and type left */
+}
+
+#stock-table tbody tr:hover {
+    background-color: var(--table-row-hover-bg);
+}
+
+/* Color Cues */
+.positive {
+    color: var(--positive-color);
+}
+
+.negative {
+    color: var(--negative-color);
+}
+
+/* Removed .rsi-indicator styles as they are no longer used */
+
+/* Add background colors for signal cells */
+td.signal.positive,
+td.signal-long.positive {
+    background-color: var(--positive-bg-color);
+}
+
+td.signal.negative,
+td.signal-long.negative {
+    background-color: var(--negative-bg-color);
+}
+
+/* Add background colors for RSI status cells */
+td.rsi-status.positive {
+    background-color: var(--positive-bg-color);
+}
+td.rsi-status.negative {
+    background-color: var(--negative-bg-color);
+}
+
+/* Sparkline Cell Styling */
+td.sparkline-cell {
+    padding-top: 0.2rem; /* Adjust vertical padding if needed */
+    padding-bottom: 0.2rem;
+    vertical-align: middle; /* Center SVG vertically */
+    min-width: 90px; /* Ensure space for sparkline */
+}
+
+/* Flash effect on update (optional - triggered by JS) */
+.flash-positive {
+    animation: flash-green 0.7s ease-out;
+}
+
+.flash-negative {
+    animation: flash-red 0.7s ease-out;
+}
+
+@keyframes flash-green {
+    0% { background-color: rgba(76, 175, 80, 0.5); }
+    100% { background-color: transparent; }
+}
+
+@keyframes flash-red {
+    0% { background-color: rgba(244, 67, 54, 0.5); }
+    100% { background-color: transparent; }
+}
+
+/* Group Header Styling */
+.group-header td {
+    background-color: var(--group-header-bg);
+    color: var(--group-header-text);
+    font-weight: bold;
+    text-align: left; /* Align header text left */
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    border-top: 2px solid var(--group-header-border);
+}
+
+/* Sort direction indicators */
+#stock-table th[data-sort-key].sort-asc::after,
+#stock-table th[data-sort-key].sort-desc::after {
+    content: '';
+    display: inline-block;
+    margin-left: 0.5em;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+#stock-table th[data-sort-key].sort-asc::after {
+    border-bottom: 5px solid var(--sort-arrow-color); /* Arrow pointing up */
+}
+
+#stock-table th[data-sort-key].sort-desc::after {
+    border-top: 5px solid var(--sort-arrow-color); /* Arrow pointing down */
+}
+/* Header Controls Styling */
+.header-controls {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center items */
+    align-items: center; /* Align items vertically */
+    gap: 1rem; /* Space between control groups */
+    margin-top: 1rem; /* Space below h1 */
+    margin-bottom: 1rem; /* Space above table */
+}
+
+.filter-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between label and select */
+}
+
+.filter-control label {
+    font-size: 0.9rem;
+    color: var(--text-color); /* Match general text color */
+}
+
+.filter-control select {
+    padding: 0.3rem 0.5rem;
+    background-color: var(--select-bg);
+    color: var(--select-text);
+    border: 1px solid var(--select-border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Adjust refresh button margin if needed */
+.header-controls #refresh-btn {
+    margin-left: 0; /* Reset margin if previously set */
+}
+
+/* Adjust status text alignment if needed */
+.header-controls #last-updated,
+.header-controls #loading-status {
+    margin-top: 0; /* Reset margin */
+    width: 100%; /* Make status take full width if wrapped */
+    text-align: center; /* Center status text */
+}
+
+
+footer p {
+    font-size: 0.8rem;
+    margin-top: -.7rem;
+    margin-bottom: -1rem;
+    
+}
+
+/* Theme Switcher Styles */
+.theme-switcher {
+    position: absolute;
+    top: 1rem; /* Adjust as needed */
+    right: 1rem; /* Adjust as needed */
+    display: inline-block;
+    width: 50px; /* Width of the switch */
+    height: 24px; /* Height of the switch */
+}
+
+.theme-switcher input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--switch-bg);
+    transition: .4s;
+    border-radius: 24px; /* Make it rounded */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; /* Size of the circle */
+    width: 18px;
+    left: 3px; /* Padding from left */
+    bottom: 3px; /* Padding from bottom */
+    background-color: var(--switch-slider-bg);
+    transition: .4s;
+    border-radius: 50%; /* Make it a circle */
+}
+
+input:checked + .slider {
+    background-color: var(--switch-checked-bg);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px); /* Move circle to the right */
+}
+
+/* Pop-up Chart Styles */
+.chart-popup {
+    display: none; /* Hidden by default */
+    position: absolute; /* Position relative to the viewport or nearest positioned ancestor */
+    width: 350px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    background-color: var(--table-bg); /* Use table background color */
+    border: 1px solid var(--table-border); /* Use table border color */
+    box-shadow: 0 4px 8px var(--shadow-color); /* Add shadow */
+    padding: 10px;
+    z-index: 1000; /* Ensure it's above other elements */
+    pointer-events: none; /* Prevent the popup itself from interfering with mouse events */
+}
+
+.chart-overlay {
+    position: absolute;
+    top: 5px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    font-size: 0.8rem;
+    color: var(--text-muted-color);
+    background-color: rgba(var(--table-bg-rgb, 30, 30, 30), 0.7); /* Semi-transparent background */
+    padding: 2px 5px;
+    border-radius: 3px;
+    z-index: 1001; /* Ensure it's above the canvas */
+}
+
+/* Page Refresh Border Animation - Flowing Gradient */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-spin {
+  to {
+    --angle: 360deg;
+  }
+}
+
+body.page-refreshing {
+  position: relative; /* Needed for pseudo-element positioning */
+  /* Ensure body background is opaque to hide gradient center */
+  background-color: var(--bg-color);
+}
+
+body.page-refreshing::before {
+  content: '';
+  position: absolute;
+  z-index: 1; /* Place above content but below potential popups */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 5px solid transparent; /* Increased border width */
+  border-radius: 10px; /* Slightly increased radius to match thicker border */
+  /* Apply the animated gradient to the border - Smoother transitions */
+  border-image-source: conic-gradient(
+    from var(--angle),
+    transparent 0%, /* Start transparent */
+    rgba(0, 123, 255, 0.1) 10%, /* Fade in (using #007bff RGB with alpha) */
+    #007bff 20%, /* Full color */
+    rgba(0, 123, 255, 0.1) 30%, /* Fade out */
+    transparent 40%, /* Fully transparent middle */
+    transparent 60%,
+    rgba(0, 123, 255, 0.1) 70%, /* Fade in */
+    #007bff 80%, /* Full color */
+    rgba(0, 123, 255, 0.1) 90%, /* Fade out */
+    transparent 100% /* End transparent */
+  );
+  border-image-slice: 1; /* Use the gradient for the border */
+  animation: gradient-spin 2.5s infinite linear; /* Slightly slower animation */
+  pointer-events: none; /* Allow clicks through the border */
+  /* Mask to clip the gradient to the border shape */
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+}
+
+/* Stale data indicator */
+tr.stale-data {
+    opacity: 0.7;
+    position: relative;
+}
+
+tr.stale-data::after {
+    content: "⟳";
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    font-size: 14px;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+}
