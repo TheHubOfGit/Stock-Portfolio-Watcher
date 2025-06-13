@@ -113,9 +113,45 @@ stock-dashboard/
 ### Supported Assets
 
 The dashboard currently tracks:
+
+| Ticker    | Company                             | Type   |
+|-----------|-------------------------------------|--------|
+| BA        | Boeing Company                      | Stock  |
+| ABNB      | Airbnb, Inc.                        | Stock  |
+| SHOP      | Shopify Inc.                        | Stock  |
+| WDAY      | Workday, Inc.                       | Stock  |
+| SWBI      | Smith & Wesson Brands, Inc.         | Stock  |
+| COIN      | Coinbase Global, Inc.               | Stock  |
+| QCOM      | QUALCOMM Incorporated               | Stock  |
+| AMD       | Advanced Micro Devices, Inc.        | Stock  |
+| NVDA      | NVIDIA Corporation                  | Stock  |
+| PLTR      | Palantir Technologies Inc.          | Stock  |
+| EQIX      | Equinix, Inc.                       | Stock  |
+| DIS       | The Walt Disney Company             | Stock  |
+| PFE       | Pfizer Inc.                         | Stock  |
+| PSEC      | Prospect Capital Corporation        | Stock  |
+| TSLA      | Tesla, Inc.                         | Stock  |
+| MSFT      | Microsoft Corporation               | Stock  |
+| GOOG      | Alphabet Inc. (GOOGL/GOOG)          | Stock  |
+| AMZN      | Amazon.com, Inc.                    | Stock  |
+| AAPL      | Apple Inc.                          | Stock  |
+| V         | Visa Inc.                           | Stock  |
+| UAL       | United Airlines Holdings, Inc.      | Stock  |
+| DAL       | Delta Air Lines, Inc.               | Stock  |
+| NOW       | ServiceNow, Inc.                    | Stock  |
+| CRM       | Salesforce, Inc.                    | Stock  |
+| DUK       | Duke Energy Corporation             | Stock  |
+| GEV       | GE Vernova Inc.                     | Stock  |
+| CEG       | Constellation Energy Corporation    | Stock  |
+| PM        | Philip Morris International Inc.    | Stock  |
+| SOXX      | iShares Semiconductor ETF           | ETF    |
+| SPXL      | Direxion Daily S&P 500 Bull 3X ETF  | ETF    |
+| TQQQ      | ProShares UltraPro QQQ              | ETF    |
+| XAR       | SPDR S&P Aerospace & Defense ETF    | ETF    |
+| BTC-USD   | Bitcoin                             | Crypto |
+| LTC-USD   | Litecoin                            | Crypto |
+
 - **Stocks**: Major US equities (AAPL, MSFT, GOOGL, etc.)
-- **ETFs**: Sector and leveraged ETFs
-- **Crypto**: Bitcoin (BTC-USD), Litecoin (LTC-USD)
 
 ### Data Sources
 
