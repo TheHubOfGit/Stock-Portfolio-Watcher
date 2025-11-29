@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Animation (2x Speed)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: transparent;
+            margin: 0;
+        }
+        
+        .timeline-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            height: 4px;
+            background-color: transparent; /* Make the track background invisible */
+            border-radius: 5px;
+            margin: 50px auto;
+        }
+        
+        .progress-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: #aaaaaa;
+            border-radius: 5px;
+            transition: width 1.25s ease-in-out;
+        }
+        
+        .progress-line.fade-end {
+            /* Start fade after the last dot (at 87%) */
+            background: linear-gradient(to right, #aaaaaa 90%, transparent 100%);
+        }
+        
+        .dot {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #333;
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dot.start {
+            left: 0%;
+            background-color: #555;
+            opacity: 0.8;
+        }
+        
+        .dot.green {
+            left: 7%;
+            background-color: rgba(76, 175, 80, 0.8);
+            opacity: 0;
+            transition: opacity 0.75s ease;
+        }
+        
+        .dot.red {
+            left: 15%;
+            background-color: rgba(244, 67, 54, 0.8);
+            opacity: 0;
+            transition: opacity 0.75s ease;
+        }
+        
+        .dot.blue {
+            left: 34%;
+            background-color: rgba(33, 150, 243, 0.8);
+            opacity: 0;
+            transition: opacity 0.75s ease;
+        }
+        
+        .dot.red-small1 {
+            left: 40%;
+            background-color: rgba(244, 67, 54, 0.8);
+            opacity: 0;
+            transition: opacity 0.75s ease;
+            width: 8px;
+            height: 8px;
+        }
+        
+        .dot.red2 {
+            left: 50%;
+            background-color: rgba(244, 67, 54, 0.8);
+            opacity: 0;
+            transition: opacity 0.75s ease;
+        }
+        
+        .dot.red-small2 {
+            left: 87%;
+            background-color: rgba(244, 67, 54, 0.8);
+            opacity: 0;
+            transition: opacity 0.75s ease;
+            width: 8px;
+            height: 8px;
+        }
+        
+        .label {
+            display: none;
+        }
+        
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 0 5px rgba(0, 0, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="timeline-container">
+        <div class="progress-line" id="progress"></div>
+        <div class="dot start pulse" id="start-dot">
+            <div class="label">MHA Degree</div>
+        </div>
+        <div class="dot green" id="green-dot">
+            <div class="label">Green Point</div>
+        </div>
+        <div class="dot red" id="red-dot">
+            <div class="label">Red Point</div>
+        </div>
+        <div class="dot blue" id="blue-dot">
+            <div class="label">Blue Point</div>
+        </div>
+        <div class="dot red-small1" id="red-small1-dot">
+            <div class="label">Small Red 1</div>
+        </div>
+        <div class="dot red2" id="red2-dot">
+            <div class="label">Red Point</div>
+        </div>
+        <div class="dot red-small2" id="red-small2-dot">
+            <div class="label">Small Red 2</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const progress = document.getElementById('progress');
+            const startDot = document.getElementById('start-dot');
+            const greenDot = document.getElementById('green-dot');
+            const redDot = document.getElementById('red-dot');
+            const blueDot = document.getElementById('blue-dot');
+            const redSmall1Dot = document.getElementById('red-small1-dot');
+            const red2Dot = document.getElementById('red2-dot');
+            const redSmall2Dot = document.getElementById('red-small2-dot');
+            
+            // Start the animation sequence
+            setTimeout(startAnimation, 1000);
+            
+            function startAnimation() {
+                // Progress to green dot
+                progress.style.width = '7%';
+                setTimeout(() => {
+                    greenDot.style.opacity = '1';
+                    greenDot.classList.add('pulse');
+                    startDot.classList.remove('pulse');
+                    
+                    // Wait at green dot
+                    setTimeout(() => {
+                        greenDot.classList.remove('pulse');
+                        
+                        // Progress to first red dot
+                        progress.style.width = '15%';
+                        setTimeout(() => {
+                            redDot.style.opacity = '1';
+                            redDot.classList.add('pulse');
+                            
+                            // Progress to blue dot
+                            setTimeout(() => {
+                                redDot.classList.remove('pulse');
+                                progress.style.width = '34%';
+                                setTimeout(() => {
+                                    blueDot.style.opacity = '1';
+                                    blueDot.classList.add('pulse');
+                                    
+                                    // Progress to small red dot 1
+                                    setTimeout(() => {
+                                        blueDot.classList.remove('pulse');
+                                        progress.style.width = '40%';
+                                        setTimeout(() => {
+                                            redSmall1Dot.style.opacity = '1';
+                                            
+                                            // Progress to second red dot
+                                            setTimeout(() => {
+                                                progress.style.width = '50%';
+                                                setTimeout(() => {
+                                                    red2Dot.style.opacity = '1';
+                                                    red2Dot.classList.add('pulse');
+                                                    
+                                                    // Progress to small red dot 2
+                                                    setTimeout(() => {
+                                                        red2Dot.classList.remove('pulse');
+                                                        progress.style.width = '87%';
+                                                        setTimeout(() => {
+                                                            redSmall2Dot.style.opacity = '1';
+                                                            
+                                                            // Progress to end with fade
+                                                            setTimeout(() => {
+                                                                progress.classList.add('fade-end');
+                                                                progress.style.width = '100%';
+                                                            }, 1000);
+                                                        }, 750);
+                                                    }, 1500);
+                                                }, 1250);
+                                            }, 1000);
+                                        }, 750);
+                                    }, 1500);
+                                }, 1250);
+                            }, 1500);
+                        }, 1250);
+                    }, 1500); // Half the original wait time
+                }, 1250);
+            }
+        });
+    </script>
+</body>
+</html>

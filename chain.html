@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Physics Light Chain</title>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #222; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script>
+        // Matter.js module aliases
+        const Engine = Matter.Engine;
+        const Render = Matter.Render;
+        const Runner = Matter.Runner;
+        const Composites = Matter.Composites;
+        const Constraint = Matter.Constraint;
+        const MouseConstraint = Matter.MouseConstraint;
+        const Mouse = Matter.Mouse;
+        const Composite = Matter.Composite;
+        const Bodies = Matter.Bodies;
+        const Events = Matter.Events;
+
+        // --- Engine and Renderer Setup ---
+        const engine = Engine.create({
+            // Enable sleeping to improve performance and stability when objects are at rest
+            enableSleeping: true,
+            // Increase position iterations for better constraint stability (default is 6)
+            positionIterations: 10
+        });
+        const world = engine.world;
+        engine.gravity.y = 1; // Standard gravity
+
+        const render = Render.create({
+            element: document.body,
+            engine: engine,
+            options: {
+                width: window.innerWidth,
+                height: window.innerHeight,
+                wireframes: false, // Show shapes filled
+                background: '#111'
+            }
+        });
+
+        Render.run(render);
+        const runner = Runner.create();
+        Runner.run(runner, engine);
+
+        // --- Chain Creation ---
+        const group = Matter.Body.nextGroup(true);
+        const segmentLength = 30; // Visual length of each segment
+        const segmentRadius = 10; // Increased radius for easier touch selection
+        const numSegments = 15;   // Number of segments in the chain
+        const stiffness = 0.6;    // Stiffness of the constraints connecting segments
+        const damping = 0.2;      // Increased Damping for constraints
+        const chainStartX = window.innerWidth / 2;
+        const chainStartY = 0; // Start slightly off-screen top
+
+        const chain = Composites.stack(chainStartX, chainStartY, numSegments, 1, 0, 0, function(x, y) {
+            return Bodies.circle(x, y, segmentRadius, {
+                collisionFilter: { group: group },
+                frictionAir: 0.1, // Increased air resistance
+                slop: 0.2, // Increase slop for better touch interaction
+                render: {
+                    fillStyle: '#aaa', // Default segment color
+                    strokeStyle: '#fff',
+                    lineWidth: 1
+                }
+            });
+        });
+
+        // Add constraints between segments
+        Composites.chain(chain, 0.5, 0, -0.5, 0, {
+            stiffness: stiffness,
+            length: segmentLength * 0.1, // Constraint length slightly less than visual for slack
+            damping: damping,
+            render: {
+                type: 'line',
+                strokeStyle: '#666',
+                lineWidth: 1
+            }
+        });
+
+        // Fix the top end of the chain
+        const firstSegment = chain.bodies[0];
+        const anchor = { x: chainStartX, y: 5 }; // Anchor point slightly below the top edge
+        Composite.add(world, [
+            chain,
+            Constraint.create({
+                bodyA: null, // Anchored to the world
+                pointA: anchor,
+                bodyB: firstSegment,
+                pointB: { x: 0, y: 0 }, // Connect closer to the center of the larger first segment
+                stiffness: 0.5, // Further reduced stiffness for more top flexibility
+                length: 0 // Keep it fixed at the anchor
+            })
+        ]);
+
+        // --- Interaction & Pull Limit ---
+        const mouse = Mouse.create(render.canvas);
+        const mouseConstraint = MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+                stiffness: 0.1, // Make dragging a bit soft
+                render: {
+                    visible: false // Don't show the mouse constraint line
+                }
+            }
+        });
+
+        Composite.add(world, mouseConstraint);
+        render.mouse = mouse; // Keep the renderer aware of the mouse
+
+        let draggedChainBody = null; // Store the body being dragged
+        let startPullX = 0;          // Store the initial X position of the mouse when drag starts
+        let startPullY = 0;          // Store the initial Y position of the mouse when drag starts
+        const maxPullDistance = 100; // Maximum pixels to pull in any direction relative to start
+        let vibrationTriggeredThisDrag = false; // Flag to trigger vibration only once per drag at max distance
+
+        // Last segment will now use the default style defined during creation
+
+
+        Events.on(mouseConstraint, 'startdrag', (event) => {
+            // Check if the dragged body is part of the chain
+            if (chain.bodies.includes(event.body)) {
+                draggedChainBody = event.body;
+                startPullX = mouse.position.x; // Record mouse X at drag start
+                startPullY = mouse.position.y; // Record mouse Y at drag start
+                vibrationTriggeredThisDrag = false; // Reset vibration flag on new drag
+                // Optional: Make the chain less stiff while dragging
+                // chain.constraints.forEach(c => c.stiffness = 0.05);
+            }
+        });
+
+        Events.on(mouseConstraint, 'enddrag', (event) => {
+            // Check if we were dragging a chain body and if the ended drag corresponds to it
+            if (draggedChainBody && event.body === draggedChainBody) {
+                // Restore original stiffness if it was changed
+                // chain.constraints.forEach(c => c.stiffness = stiffness); // Need 'stiffness' variable accessible here if uncommented
+
+                // Reset drag state
+                draggedChainBody = null;
+            }
+        });
+
+        Events.on(engine, 'beforeUpdate', () => {
+            if (draggedChainBody) {
+                // Calculate the vector from the drag start point to the current mouse position
+                const deltaX = mouse.position.x - startPullX;
+                const deltaY = mouse.position.y - startPullY;
+                const currentDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                // If the distance exceeds the maximum allowed pull distance
+                if (currentDistance > maxPullDistance) {
+                    // Trigger vibration only once when the limit is first hit
+                    if (!vibrationTriggeredThisDrag) {
+                        if (navigator.vibrate) {
+                            navigator.vibrate([1, 50, 1]); // 1ms on, 50ms off, 1ms on
+                        } else {
+                             console.log("Vibration API not supported");
+                        }
+                        vibrationTriggeredThisDrag = true; // Prevent re-triggering during this drag
+                    }
+
+                    // Calculate the ratio to scale the vector down to the max distance
+                    const ratio = maxPullDistance / currentDistance;
+
+                    // Calculate the new clamped position
+                    const clampedX = startPullX + deltaX * ratio;
+                    const clampedY = startPullY + deltaY * ratio;
+
+                    // Apply the clamped position to the mouse
+                    mouse.position.x = clampedX;
+                    mouse.position.y = clampedY;
+
+                    // Update other mouse properties that might be used internally by Matter.js
+                    const canvasBounds = render.canvas.getBoundingClientRect();
+                    mouse.absolute.x = mouse.position.x + canvasBounds.left + window.scrollX;
+                    mouse.absolute.y = mouse.position.y + canvasBounds.top + window.scrollY;
+                    mouse.offset.x = mouse.position.x;
+                    mouse.offset.y = mouse.position.y;
+                }
+
+                // --- Optional: Visual feedback (can be re-added) ---
+                // const currentPullDistance = Math.max(0, mouse.position.y - startPullY); // Use potentially clamped position
+                // const pullRatio = Math.min(1, currentPullDistance / maxPullDown);
+                // const red = Math.floor(170 + 85 * pullRatio);
+                // const green = Math.floor(170 * (1 - pullRatio));
+                // const blue = Math.floor(170 * (1 - pullRatio));
+                // const color = `rgb(${red}, ${green}, ${blue})`;
+                // chain.bodies.forEach((body) => {
+                //     if (body !== lastSegment) {
+                //        body.render.fillStyle = color;
+                //     }
+                // });
+
+            } else {
+                 // --- Optional: Reset visual styles when not dragging ---
+                 // Reset non-last segment colors if they were changed during drag
+                 // chain.bodies.forEach((body) => {
+                 //    if (body !== lastSegment) {
+                 //       body.render.fillStyle = '#aaa'; // Reset to default color
+                 //    }
+                 // });
+            }
+        });
+
+
+        // --- Fit to window ---
+        Render.lookAt(render, {
+            min: { x: 0, y: 0 },
+            max: { x: window.innerWidth, y: window.innerHeight }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            render.options.width = window.innerWidth;
+            render.options.height = window.innerHeight;
+            render.canvas.width = window.innerWidth;
+            render.canvas.height = window.innerHeight;
+            Render.lookAt(render, {
+                min: { x: 0, y: 0 },
+                max: { x: window.innerWidth, y: window.innerHeight }
+            });
+            // Could potentially reposition the anchor on resize if needed
+            // anchor.x = window.innerWidth / 2;
+            // Constraint update might be needed if anchor moves significantly
+        });
+
+    </script>
+</body>
+</html>

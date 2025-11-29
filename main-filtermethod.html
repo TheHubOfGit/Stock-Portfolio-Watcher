@@ -1,0 +1,2876 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Michael Brancazio | Data & Analytics Professional</title>
+    <meta name="description" content="Michael Brancazio is a data professional with expertise in business intelligence, data analysis, and healthcare analytics.">
+    <link rel="icon" href="images/headshot.jpeg">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Michael Brancazio | Portfolio">
+    <meta property="og:description" content="Healthcare data professional specializing in business intelligence, data analysis, and analytics.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <style>
+        :root {
+            --bg-color: rgb(255, 255, 255);
+            --card-bg: rgba(255, 255, 255, 0.6); /* Increased transparency for glass effect */
+            --text-color: rgb(39, 39, 42);
+            --text-secondary: rgb(128, 128, 128);
+            --border-color: rgba(0, 0, 0, 0.06);
+            --accent-blue: #3771c8;
+            --accent-teal: #4682B4;
+            --font-primary: "Figtree", sans-serif;
+        }
+        
+        /* Dark Mode Styles - Applied via body class */
+        body.dark-mode {
+            --bg-color: rgb(10, 10, 11);
+            --card-bg: rgba(18, 18, 18, 0.6); /* Increased transparency for glass effect */
+            --text-color: rgb(255, 255, 255);
+            --text-secondary: rgb(161, 161, 170);
+            --border-color: rgba(255, 255, 255, 0.06);
+        }
+
+/* Card modifications for independent scrolling */
+.card {
+    /* Existing styles preserved */
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: inset 0px 0px 0px 1px var(--border-color), 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+    min-width: 320px;
+    width: 320px;
+    flex-shrink: 0;
+    transition: transform 0.2s ease-in-out;
+    position: relative; /* Keep this for logo badge positioning */
+    
+    /* Add these new styles */
+    max-height: 450px; /* Set maximum height for cards */
+    overflow: hidden; /* Hide overflow at card level */
+}
+
+/* Add a scrollable container class for the card content */
+.card-scrollable-content {
+    overflow-y: auto; /* Enable vertical scrolling */
+    height: 100%; /* Take full height of the card */
+    padding-right: 8px; /* Add space for scrollbar */
+    margin-right: -8px; /* Compensate for padding */
+}
+
+/* Add scrollbar styling for WebKit browsers */
+.card-scrollable-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.card-scrollable-content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.card-scrollable-content::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+/* For Firefox scrollbar */
+.card-scrollable-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode scrollbar adjustments */
+body.dark-mode .card-scrollable-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .card-scrollable-content::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .card-scrollable-content {
+    scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+}
+
+/* Ensure logo badges remain properly positioned */
+.logo-badge {
+    /* Keep existing styles - no changes needed */
+    position: absolute;
+    top: -12px;
+    left: -15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0,0,0,0.1);
+    background-color: var(--card-bg);
+    z-index: 100;
+}
+
+/* Ensure card-wide and card-large retain proper dimensions */
+.card-wide {
+    min-width: 520px;
+    width: 520px;
+    max-height: 500px; /* Slightly taller for wider cards */
+}
+
+.card-large {
+    min-width: 520px;
+    width: 520px;
+    max-height: 500px; /* Slightly taller for larger cards */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .card {
+        max-height: none; /* Remove max height on mobile */
+    }
+    
+    .card-wide, .card-large {
+        max-height: none; /* Remove max height on mobile */
+    }
+    
+    .card-scrollable-content {
+        overflow-y: visible; /* Disable scrolling on mobile */
+        padding-right: 0; /* Remove scrollbar space */
+        margin-right: 0; /* Reset margin */
+    }
+
+    .logo-badge {
+        left: 10px; /* Adjust logo position for mobile */
+    }
+}
+       /* Chain Container Styles */
+        #chain-container {
+            position: fixed;
+            top: -10px;
+            right: -15px;
+            width: 80px;  /* Adjust size as needed */
+            height: 100vh; /* Make container full height */
+            z-index: 1000; /* Lowered z-index to be below FAB */
+            display: block; /* Explicitly set display */
+            cursor: grab; /* Indicate interactivity */
+            /* background-color: rgba(255, 0, 0, 0.1); Removed temporary background */
+        }
+        #chain-container canvas {
+             display: block;
+             width: 100%;
+             height: 100%;
+        }
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            font-family: var(--font-primary);
+            color: var(--text-color);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        
+        .container {
+            /* max-width: 1440px; Removed */
+            margin: 0;
+            /* padding-left: 72px; Removed */
+            width: 100%; /* Make container full width */
+            min-height: 100vh; /* Make container full height */
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; Removed */
+        }
+        
+        .section {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            position: relative;
+        }
+        
+        .fixed-column {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 72px; /* Re-apply left padding */
+            width: 600px; /* Decreased width */
+            overflow: auto;
+            z-index: 1;
+        }
+        
+        .scrollable-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            padding: 32px 0 70px 72px; /* Increased bottom padding for footer */
+            /* height: 100vh; */ /* Removed to allow natural height */
+            overflow: visible;
+            width: calc(100% - 600px); /* Adjusted for new fixed column width */
+            /* align-items: flex-start; /* Prevent section containers from stretching */ /* Removed */
+        }
+        
+        .horizontal-scroll-container {
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            padding: 20px 16px 0 16px; /* Added 10px top padding */
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+            height: 520px;
+        }
+        
+        .horizontal-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .profile-card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(4px); /* Add blur effect */
+            -webkit-backdrop-filter: blur(4px); /* Safari support */
+            border-radius: 20px;
+            box-shadow: inset 0px 0px 0px 1px var(--border-color), 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            height: auto;
+            width: 100%;
+            max-width: 500px; /* Increased max-width further */
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .avatar {
+            width: 48px; /* Keep size */
+            height: 48px; /* Keep size */
+            border-radius: 50%; /* Keep shape */
+            overflow: hidden; /* Ensure image stays within rounded bounds */
+            transition: transform 0.5s ease-in-out; /* Slowed down transition for scaling */
+        }
+
+        .avatar.shocked-zoom {
+            transform: scale(1.2); /* Zoom effect */
+        }
+        
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .profile-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .profile-status {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .status-indicator {
+            position: relative;
+            width: 8px;
+            height: 8px;
+        }
+
+        .status-dot {
+            position: absolute; /* Position within the indicator */
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #34D399;
+            /* Removed pulse animation */
+        }
+
+        .status-ping {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px; /* Keep size for positioning */
+            height: 8px; /* Keep size for positioning */
+            border-radius: 50%;
+            /* Removed border */
+            /* Add box-shadow for the glow effect */
+            box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); /* Initial state: 0 spread, visible */
+            transform: translate(-50%, -50%);
+            animation: sonar 2.5s infinite ease-out; /* Increased duration */
+            opacity: 1; /* Let animation handle opacity */
+        }
+
+        @keyframes sonar {
+          0% {
+            /* Start with no spread, initial opacity */
+            box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+            opacity: 0.7;
+          }
+          70% {
+            /* Expand shadow spread, start fading */
+            box-shadow: 0 0 0 10px rgba(52, 211, 153, 0); /* Reduced spread, fade color alpha */
+            opacity: 0;
+          }
+          100% {
+            /* Ensure fully faded */
+            box-shadow: 0 0 0 10px rgba(52, 211, 153, 0); /* Reduced spread */
+            opacity: 0;
+          }
+        }
+        .profile-description {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            font-size: 14px;
+        }
+        
+        .location {
+            font-weight: 500;
+        }
+        
+        .timezone {
+            color: var(--text-secondary);
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: inset 0px 0px 0px 1px var(--border-color), 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            min-height: 180px;
+            /* height: 100%; Let align-items: stretch handle height */
+            min-width: 320px;
+            width: 320px;
+            flex-shrink: 0;
+            overflow: visible; /* Allow logo badge to overflow */
+            /* overflow-x: hidden; /* Prevent badge overflow horizontally */
+            transition: transform 0.2s ease-in-out;
+            position: relative; /* Ensure card is a positioning context */
+        }
+
+        /* Logo Badge Styles */
+        .logo-badge {
+            position: absolute;
+            top: -12px; /* Adjust positioning */
+            left: -15px; /* Adjust positioning */
+            width: 40px; /* Adjust size */
+            height: 40px; /* Adjust size */
+            border-radius: 50%; /* Circular crop */
+            object-fit: cover; /* Ensure image covers the area */
+            border: 2px solid rgba(255, 255, 255, 0.5); /* Simple white border */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0,0,0,0.1); /* Subtle shadow + inner line */
+            background-color: var(--card-bg); /* Background in case image fails */
+            z-index: 100; /* Ensure logo is above other elements */
+        }
+        /* End Logo Badge Styles */
+        
+        .card:hover, .card.hover-effect { /* Apply effect on hover or when class is added */
+            transform: translateY(-5px);
+        }
+        .card { /* Add transition to the base card style */
+            /* ... existing styles ... */
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .card-wide {
+            min-width: 520px;
+            width: 520px;
+        }
+        
+        .card-large {
+            min-width: 520px;
+            width: 520px;
+        }
+        
+        .card-section-title {
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            color: var(--accent-blue);
+        }
+        
+        .card-title {
+            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .experience-card {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative; /* Needed for logo positioning */
+            /* padding-top: 30px; /* REMOVED - Prevent overlap with logo */
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .experience-title {
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .experience-date {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .experience-company {
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        .experience-description {
+            margin-top: 4px; /* Reduced space above description */
+        }
+        
+        .experience-description ul {
+            padding-left: 18px;
+            margin: 8px 0;
+        }
+        
+        .experience-description li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 500px; /* Match profile-card max-width */
+        }
+        
+        .link-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .link-card {
+            background-color: var(--card-bg); /* Use variable with alpha */
+            backdrop-filter: blur(4px); /* Add blur effect */
+            -webkit-backdrop-filter: blur(4px); /* Safari support */
+            border-radius: 24px;
+            box-shadow: inset 0px 0px 0px 1px var(--border-color), 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 183px;
+            height: 98px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .link-icon {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .link-email {
+            /* Inherits .link-card styles including background and backdrop */
+            width: 100%;
+            max-width: 100%;
+            border-radius: 20px; /* Overrides .link-card radius */
+            height: 64px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 12px 16px;
+            gap: 12px;
+        }
+        .link-text {
+            flex: 1;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            position: relative; /* Needed for absolute positioning of sibling tooltip */
+        }
+        
+        .skill-tag {
+            background-color: rgba(55, 113, 200, 0.1);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent-blue);
+            transition: background-color 0.2s ease-in-out; /* Add transition */
+            position: relative; /* Needed for tooltip positioning */
+        }
+
+        .skill-tag:hover {
+            background-color: rgba(55, 113, 200, 0.2); /* Darken background on hover */
+        }
+
+        /* Sibling Tooltip Styles */
+        .python-tooltip { /* Renamed class */
+            visibility: hidden; /* Hidden by default */
+            opacity: 0;
+            position: absolute;
+            background-color: var(--card-bg);
+            backdrop-filter: blur(4px); /* Add blur effect */
+            -webkit-backdrop-filter: blur(4px); /* Safari support */
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            z-index: 10; /* Ensure it's above sibling elements */
+            /* Position relative to .skills-list container */
+            top: -10px; /* Adjust as needed */
+            left: 70px; /* Adjust based on Python tag position */
+            /* transform: translateX(-50%); Removed for now */
+            white-space: nowrap;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            pointer-events: none; /* Prevent tooltip from interfering */
+            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+            text-align: left; /* Ensure text inside is left-aligned */
+            line-height: 1.4; /* Adjust line spacing */
+        }
+
+        /* Show tooltip on Python tag hover */
+        #python-skill-tag:hover + .python-tooltip { /* Use ID and sibling selector */
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .certifications-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 12px;
+            /* position: relative; Removed - moved to .skill-tag */
+        }
+        
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .cert-icon {
+            width: 20px;
+            height: 20px;
+            color: var(--accent-blue);
+        }
+        
+        .cert-title {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .cert-issuer {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .section-label {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 16px;
+            padding-left: 16px;
+        }
+        
+        .footer {
+            padding: 10px 16px; /* Adjusted top/bottom padding */
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            background-color: var(--bg-color);
+            z-index: 10;
+        }
+        /* Role Progression Styles */
+        .role-progression {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .role-item {
+            display: flex;
+            position: relative; /* Needed for absolute positioning of the line */
+            margin-bottom: 16px; /* Space between roles */
+        }
+
+        .role-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .role-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 16px; /* Space between connector and details */
+            flex-shrink: 0;
+        }
+
+        .role-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--text-secondary);
+            border-radius: 50%;
+            z-index: 1; /* Ensure dot is above the line */
+        }
+
+        .role-line {
+            width: 2px;
+            background-color: var(--text-secondary);
+            flex-grow: 1; /* Make line fill the space */
+            margin-top: 4px; /* Space between dot and line start */
+        }
+        
+        /* Hide the line for the last role item */
+        .role-item:last-child .role-line {
+            display: none;
+        }
+
+        .role-details {
+            display: flex;
+            flex-direction: column;
+            /* padding-top: 30px; /* REMOVED - Adjust padding for logo */
+            position: relative; /* Needed for logo positioning */
+        }
+        /* Add space below role details, except for the last role */
+        .role-item:not(:last-child) .role-details {
+            padding-bottom: 24px; /* Keep existing bottom padding */
+        }
+        
+        
+        @media (max-width: 768px) {
+            .section {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .fixed-column {
+                position: relative;
+                height: auto;
+                width: 100%;
+                padding: 48px 24px 48px; /* Reduced top padding */
+            }
+            
+            .scrollable-content {
+                width: 100%;
+                height: auto;
+                overflow: visible;
+                padding: 32px 24px; /* Adjust padding for mobile */
+            }
+            
+            .horizontal-scroll-container {
+                height: auto;
+                padding: 16px 0; /* Remove horizontal padding */
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .card {
+                /* Allow centering, prevent overflow, and allow shrinking */
+                max-width: 100%;
+                width: auto; /* Override fixed base width */
+                min-width: 0; /* Override fixed base min-width */
+                /* Keep original width overrides commented out */
+                /* min-width: 100%; */
+                /* width: 100%; */
+            }
+            
+            /* .card-wide, .card-large {
+                min-width: 100%;
+                width: 100%;
+            } */
+            
+            .profile-card {
+                max-width: 100%;
+            }
+            
+            .links-container {
+                max-width: 100%;
+            }
+            
+            .link-card {
+                width: calc(50% - 8px);
+            }
+    
+            .link-email {
+                height: 98px; /* Match other link cards */
+                width: 100%; /* Ensure full width on mobile */
+            }
+            
+            .footer {
+                position: relative;
+            }
+
+            #filter-box,
+            .timeline-container {
+                display: none !important; /* Hide filter and timeline on small screens */
+            }
+        }
+
+        /* Cursor Halo Styles */
+        .cursor-halo {
+    position: fixed;
+    width: 300px; /* Very large size */
+    height: 300px; /* Very large size */
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0.05) 10%,
+        rgba(255, 255, 255, 0.04) 20%,
+        rgba(255, 255, 255, 0.03) 30%,
+        rgba(255, 255, 255, 0.02) 40%,
+        rgba(255, 255, 255, 0.015) 50%,
+        rgba(255, 255, 255, 0.01) 60%,
+        rgba(255, 255, 255, 0.005) 75%,
+        rgba(255, 255, 255, 0.001) 90%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out, opacity 0.3s ease-out;
+    z-index: -1;
+    opacity: 0;
+    left: 0;
+    top: 0;
+}
+
+        /* Opacity is now controlled by JavaScript */
+        /* Removed @keyframes pulse */
+
+        /* Removed Sibling Tooltip Styles */
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: var(--bg-color);
+            margin: 5% auto; /* 5% from the top and centered */
+            padding: 0; /* Remove padding for iframe */
+            border: 1px solid var(--border-color);
+            width: 70%; /* Changed default width */
+            height: 85%; /* Adjust height */
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        /* Removed .modal-narrow rule */
+        
+        .modal-content iframe {
+             width: 100%;
+             height: 100%;
+             border-radius: 10px; /* Match parent border-radius */
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+            z-index: 1001; /* Above iframe */
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--text-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Project Link Style */
+        .project-link {
+            cursor: pointer;
+            text-decoration: underline;
+            color: var(--accent-blue);
+        }
+        .project-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Remove underline from Fun Projects links */
+        #fun-projects-section .project-link {
+            text-decoration: none;
+        }
+
+        /* Removed "What have you done?" styles */
+
+        /* Filter Box Styles */
+        #filter-box {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--card-bg);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 10px;
+            padding: 10px 15px;
+            box-shadow: inset 0px 0px 0px 1px var(--border-color), 0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+            z-index: 1001; /* Above modal close button */
+            opacity: 0; /* Start fully transparent */
+            filter: grayscale(1); /* Start greyscale */
+            transition: opacity 0.3s ease-in-out, filter 0.3s ease-in-out; /* Add filter to transition */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            max-width: 350px; /* Adjust as needed */
+        }
+
+        #filter-box.visible {
+            opacity: 0.5; /* Visible but semi-transparent */
+            filter: grayscale(1); /* Visible but greyscale */
+        }
+
+        #filter-box.visible:hover {
+            opacity: 1; /* Full opacity on hover */
+            filter: grayscale(0); /* Full color on hover */
+        }
+
+        /* Keep filter box fully visible and colored when a filter is active */
+        #filter-box.visible.filter-active {
+            opacity: 1;
+            filter: grayscale(0);
+        }
+
+        .filter-keyword {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            color: white; /* Ensure text is readable */
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .filter-keyword:hover {
+            transform: scale(1.05);
+        }
+
+        #clear-filter-btn {
+            position: fixed;
+            top: 20px; /* Align with filter box */
+            left: 380px; /* Position next to filter box (adjust based on filter-box max-width) */
+            padding: 5px 10px;
+            background-color: #dc3545; /* Red color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            z-index: 1001;
+            display: none; /* Hidden by default */
+        }
+
+        /* Highlight Styles (Define colors) */
+        .highlight { /* Base highlight style */
+            padding: 0.1em 0; /* Minimal vertical padding */
+            margin: -0.1em 0; /* Counteract padding */
+            border-radius: 3px;
+            color: white !important; /* Ensure highlighted text is readable */
+            box-decoration-break: clone; /* Handle line breaks */
+            -webkit-box-decoration-break: clone; /* Safari */
+        }
+        .highlight-python { background-color: #306998; }
+        .highlight-sql { background-color: #E38C00; }
+        .highlight-tableau { background-color: #E97627; }
+        .highlight-powerbi { background-color: #F2C811; color: #333 !important; } /* Darker text for yellow */
+        .highlight-machinelearning { background-color: #4CAF50; }
+        .highlight-datascience { background-color: #2196F3; }
+        .highlight-analytics { background-color: #9C27B0; }
+        .highlight-healthcare { background-color: #FF5722; }
+        .highlight-ai { background-color: #00BCD4; }
+        .highlight-visualization { background-color: #607D8B; }
+
+        /* Timeline Animation Styles */
+        .timeline-container {
+            position: relative;
+            width: 80%; /* Adjust width as needed for the column */
+            max-width: 400px; /* Max width within the column */
+            height: 4px;
+            /* Make background track fade like the progress line */
+            background: linear-gradient(to right, rgba(234, 234, 234, 0.5) 90%, transparent 100%);
+            border-radius: 5px;
+            margin: 100px 0 20px 0; /* Increased top margin */
+        }
+        
+        .progress-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: #aaaaaa;
+            border-radius: 5px;
+            transition: width 1.25s ease-in-out;
+        }
+        
+        .progress-line.fade-end {
+            background: linear-gradient(to right, #aaaaaa 90%, transparent 100%);
+        }
+        
+        /* Update dot styles to display logos */
+        .dot {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px; /* Increased size for logos */
+            height: 24px; /* Increased size for logos */
+            border-radius: 50%;
+            background-color: transparent; /* Remove background color */
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            /* overflow: hidden; /* Removed to allow label visibility */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white; /* Add white border */
+            box-sizing: content-box; /* Ensure border is added outside */
+            /* Base opacity and transition for fade-in */
+            opacity: 0;
+            transition: opacity 0.75s ease;
+        }
+
+        /* Style for the logo images inside dots */
+        .dot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the circle area */
+            border-radius: 50%; /* Ensure image is circular */
+        }
+
+        /* Keep the start dot as is, or replace with a graduation cap icon */
+        .dot.start {
+            left: 0%;
+            background-color: #555; /* Keep original styling if not using image */
+            opacity: 0.8; /* Start dot is visible initially */
+            border: none; /* Remove border for start dot if not using image */
+            /* If using an image for start dot, remove background-color and add image styles */
+            width: 20px; /* Match smaller dot size */
+            height: 20px; /* Match smaller dot size */
+        }
+
+        /* Override styles for start dot when it contains an image */
+        .dot.start:has(img) {
+            background-color: transparent; /* Remove grey background */
+            opacity: 1; /* Make fully opaque */
+            border: 2px solid white; /* Add the white border */
+        }
+
+        /* Ensure start dot image (if used) doesn't have the white border initially */
+        .dot.start img {
+             /* No specific border needed here unless different from default */
+        }
+
+        /* Positioning for other dots */
+        .dot.green { left: 7%; }
+        .dot.red { left: 15%; }
+        .dot.blue { left: 34%; }
+        .dot.red-small1 { left: 40%; width: 20px; height: 20px; } /* Slightly smaller */
+        .dot.red2 { left: 50%; }
+        .dot.red-small2 { left: 87%; width: 20px; height: 20px; } /* Slightly smaller */
+
+        /* Update pulse animation to work with images */
+        .pulse {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3), 0 0 5px rgba(0, 0, 0, 0.2); /* Combine shadows */
+            }
+            50% {
+                box-shadow: 0 0 0 5px rgba(255, 255, 255, 0), 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0), 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        /* Adjust label positioning for the larger dots */
+        .label {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 100%; /* Position below the dot */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%) translateY(5px); /* Center and slight offset down */
+            background-color: var(--card-bg); /* Use card background */
+            backdrop-filter: blur(2px); /* Slight blur */
+            -webkit-backdrop-filter: blur(2px);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 11px; /* Smaller font */
+            font-weight: 500;
+            white-space: nowrap; /* Prevent wrapping */
+            z-index: 3; /* Ensure label is above progress line */
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+            margin-top: 14px; /* Increased to account for larger dots */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            pointer-events: none; /* Don't interfere with dot hover */
+            text-align: center;
+        }
+        .dot:hover .label {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0); /* Move into final position */
+        }
+        /* End Timeline Animation Styles */
+
+        /* Allow specific scroll containers to auto-adjust height */
+        #education-skills-section .horizontal-scroll-container,
+        #fun-projects-section .horizontal-scroll-container,
+        #consulting-experience-section .horizontal-scroll-container { /* Added Consulting */
+            height: auto;
+            align-items: stretch; /* Apply stretch behavior */
+        }
+        #related-projects-section .horizontal-scroll-container {
+            height: auto;
+            align-items: stretch; /* Align items to top, allow natural height */
+        }
+
+        /* Sticky Mobile Header Styles */
+        #sticky-mobile-header {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg); /* Use card background for consistency */
+            backdrop-filter: blur(10px); /* Increased blur for more frosting */
+            -webkit-backdrop-filter: blur(10px); /* Increased blur for more frosting */
+            padding: 8px 16px;
+            z-index: 999; /* Below modal but above most content */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adjusted shadow for raised effect */
+            border-radius: 0 0 12px 12px; /* Rounded bottom corners */
+            align-items: center;
+            gap: 12px;
+            transition: opacity 0.3s ease-in-out; /* Add transition for smoother appearance */
+            opacity: 0; /* Start transparent for transition */
+        }
+
+        #sticky-mobile-header.visible {
+            display: flex; /* Show when visible class is added */
+            opacity: 1; /* Fade in */
+        }
+
+        #sticky-mobile-header .avatar-sticky {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        #sticky-mobile-header .avatar-sticky img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #sticky-mobile-header .name-sticky {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-color);
+        }
+
+        @media (min-width: 769px) {
+             #sticky-mobile-header {
+                 display: none !important; /* Ensure it's always hidden on larger screens */
+             }
+        }
+        /* End Sticky Mobile Header Styles */
+ 
+        /* Dark Mode Toggle Class */
+        body.dark-mode {
+            --bg-color: rgb(10, 10, 11);
+            --card-bg: rgba(18, 18, 18, 0.6);
+            --text-color: rgb(255, 255, 255);
+            --text-secondary: rgb(161, 161, 170);
+            --border-color: rgba(255, 255, 255, 0.06);
+        }
+ 
+        /* Chain Toggle Container Styles */
+        #chain-toggle-container {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            width: 80px; /* Small width */
+            height: 150px; /* Small height */
+            z-index: 1002; /* Above filter box, modal close */
+            /* background-color: rgba(100, 100, 100, 0.1); Optional: for debugging */
+            border-radius: 5px;
+            overflow: hidden; /* Ensure canvas stays within bounds */
+            cursor: grab; /* Indicate interactivity */
+        }
+ 
+        #chain-toggle-container:active {
+            cursor: grabbing;
+        }
+ 
+        #chain-toggle-container canvas {
+            display: block; /* Remove extra space below canvas */
+            /* Ensure canvas background is transparent */
+            background-color: transparent !important;
+        }
+
+        /* FAB Button Styles */
+        #filter-fab {
+            display: none; /* Hidden by default on desktop */
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 40px     ;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent-blue);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1002;
+            transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+            /* display: flex; <-- Removed this line */
+            align-items: center;
+            justify-content: center;
+        }
+
+        #filter-fab:hover, #filter-fab:focus {
+            transform: scale(1.1);
+        }
+
+        #filter-fab.active {
+            background-color: #dc3545; /* Red color when active */
+            transform: rotate(45deg);
+        }
+
+        #filter-fab svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Mobile filter styles */
+        /* Mobile filter styles - modify the existing media query */
+        @media (max-width: 768px) {
+            /* Modify the existing rule for filter box */
+            #filter-box {
+                display: flex !important;
+        position: fixed;
+        bottom: 90px; /* Position above the FAB */
+        right: 20px;
+        left: auto; /* Reset left position */
+        top: auto; /* Reset top position */
+        max-width: 160px; /* Fixed width for single column */
+        width: 200px; /* Set explicit width */
+        max-height: 60vh; /* Limit height */
+        overflow-y: auto; /* Allow scrolling if many filters */
+        flex-direction: column; /* Force column layout */
+        align-items: stretch; /* Make items fill container width */
+        flex-wrap: nowrap !important; /* Prevent wrapping at all costs */
+        transform: scale(0);
+        transform-origin: bottom right;
+        opacity: 0;
+        pointer-events: none; /* Not clickable when hidden */
+        transition: transform 0.3s ease-out, opacity 0.2s ease;
+        padding: 12px; /* Add consistent padding */
+        gap: 8px; /* Space between filter items */
+            }
+            
+            #filter-box.mobile-visible {
+                transform: scale(1);
+                opacity: 1;
+                pointer-events: auto; /* Restore clickability */
+                filter: grayscale(0); /* Always full color on mobile */
+            }
+
+            /* Show the FAB on mobile */
+            #filter-fab {
+                display: flex;
+            }
+            
+            /* Adjust filter keyword styles for mobile column layout */
+            .filter-keyword {
+                text-align: left;
+                padding: 8px 12px;
+                margin: 2px 0;
+                border-radius: 8px;
+                font-size: 14px; /* Slightly larger for touch targets */
+                width: 100%; /* Fill the container width */
+                box-sizing: border-box; /* Include padding in width calculation */
+            }
+            
+            /* Make clear filter button match the column width */
+             #clear-filter-btn { /* Base style adjustment for mobile */
+                bottom: 90px; /* Keep initial position relative to FAB */
+                right: 20px;
+                left: auto;
+                top: auto;
+                /* Remove width here, apply only when visible */
+            }
+
+            #clear-filter-btn.mobile-visible {
+                display: block;
+                bottom: 160px; /* Position above the filter options */
+                /* right: 20px; Already set */
+                /* left: auto; Already set */
+                /* top: auto; Already set */
+                width: calc(80% - 24px); /* Match filter box width (max-width 80% minus 2*12px padding) */
+                text-align: center;
+                /* Ensure it's positioned correctly relative to the filter box */
+                 transform: translateX(calc(-1 * (100% - (80% - 24px)) / 2)); /* Center relative to filter box width */
+                 /* This centering might need adjustment depending on exact layout */
+            }
+
+            /* Hide timeline container as before */
+            .timeline-container {
+                display: none !important;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <script>
+      // Apply theme immediately to prevent FOUC (Flash of Unstyled Content)
+      (function() {
+        try {
+          const theme = localStorage.getItem('theme');
+          // Apply theme based on localStorage, defaulting to dark mode if no preference is saved.
+          if (theme === 'light') {
+            // Do nothing, light mode is the default via CSS
+          } else { // Apply dark mode if theme is 'dark' or if no theme is set (null/undefined)
+            // Check if body exists before adding class, although it should at this point
+            if (document.body) {
+                document.body.classList.add('dark-mode');
+            } else {
+                // Fallback: apply to html element if body isn't ready (less likely needed here)
+                document.documentElement.classList.add('dark-mode');
+            }
+          }
+        } catch (e) {
+          // Avoid breaking page load if localStorage or matchMedia fails
+          console.error('Error applying initial theme:', e);
+        }
+      })();
+    </script>
+    <!-- Sticky Mobile Header -->
+    <div id="sticky-mobile-header">
+        <div class="avatar-sticky"><img src="images/headshot.jpeg" alt="Michael Brancazio headshot"></div>
+        <div class="name-sticky">Michael Brancazio</div>
+    </div>
+    <!-- End Sticky Mobile Header -->
+
+    <!-- Filter Box -->
+    <div id="filter-box">
+        <!-- Keywords will be added here by JS, or manually if preferred -->
+        <button class="filter-keyword" data-keyword="Python" style="background-color: #306998;">Python</button>
+        <button class="filter-keyword" data-keyword="SQL" style="background-color: #E38C00;">SQL</button>
+        <button class="filter-keyword" data-keyword="Tableau" style="background-color: #E97627;">Tableau</button>
+        <button class="filter-keyword" data-keyword="Power BI" data-highlight-term="PowerBI" style="background-color: #F2C811; color: #333;">Power BI</button>
+        <button class="filter-keyword" data-keyword="Machine Learning" data-highlight-term="MachineLearning" style="background-color: #4CAF50;">Machine Learning</button>
+        <button class="filter-keyword" data-keyword="Data Science" data-highlight-term="DataScience" style="background-color: #2196F3;">Data Science</button>
+        <button class="filter-keyword" data-keyword="Analytics" style="background-color: #9C27B0;">Analytics</button>
+        <button class="filter-keyword" data-keyword="Healthcare" style="background-color: #FF5722;">Healthcare</button>
+        <button class="filter-keyword" data-keyword="AI" style="background-color: #00BCD4;">AI</button>
+        <button class="filter-keyword" data-keyword="Visualization" style="background-color: #607D8B;">Visualization</button>
+    </div>
+    <button id="clear-filter-btn">Clear Filter</button>
+
+    <!-- Filter FAB for mobile -->
+    <button id="filter-fab" aria-label="Filter">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+      </svg>
+    </button>
+
+    <div class="container">
+        <div class="section">
+            <div class="fixed-column">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="avatar"><img id="profile-picture" src="images/headshot.jpeg" alt="Michael Brancazio headshot" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; transition: transform 0.3s ease-in-out;" draggable="false"></div>
+                        <div class="profile-info">
+                            <div class="profile-name">Michael Brancazio</div>
+                            <div class="profile-status">
+                                <div class="status-indicator">
+                                    <div class="status-dot"></div>
+                                    <div class="status-ping"></div>
+                                </div>
+                                <span>Available for opportunities</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-description">
+                        I build data solutions in healthcare, turning complex information into clear insights and predictive models. I enjoy working with Python, SQL, and visualization tools like Tableau/Power BI, and I'm passionate about leveraging AI and teaching others how to use data effectively.
+                    </div>
+                    
+                    <div class="location-info">
+                        <div class="location">New York, NY, USA 🇺🇸</div>
+                        <div class="timezone">UTC/GMT -5 hours</div>
+                    </div>
+                </div>
+                
+                <div class="links-container" style="margin-top: 16px;">
+                    <a href="mailto:michael.brancazio@gmail.com" class="link-card link-email">
+                        <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span class="link-text">michael.brancazio@gmail.com</span>
+                    </a>
+                    
+                    <div class="link-row">
+                        <a href="https://www.linkedin.com/in/michael-brancazio" target="_blank" class="link-card">
+                            <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+                        
+                        <a href="tel:5163751739" class="link-card">
+                            <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
+                            </svg>
+                            <span>(516) 375-1739</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Timeline Animation HTML -->
+                <!-- Timeline Animation HTML with Logos -->
+                <div class="timeline-container" style="left: 50px;">
+                    <div class="progress-line" id="progress"></div>
+                    
+                    <!-- First dot (MHA Degree) - using Hofstra logo -->
+                    <div class="dot start pulse" id="start-dot">
+                        <img src="images/Hofstra.png" alt="Hofstra University">
+                        <div class="label">MHA Degree</div>
+                    </div>
+                    
+                    <!-- ICL dot -->
+                    <div class="dot green" id="green-dot" data-job-target="icl">
+                        <img src="images/ICL.png" alt="ICL">
+                        <div class="label">Administrative Manager<br>ICL, Brooklyn NY</div>
+                    </div>
+                    
+                    <!-- NYP Revenue Cycle Analyst dot -->
+                    <div class="dot red" id="red-dot" data-job-target="rca">
+                        <img src="images/NYP.jpg" alt="NewYork-Presbyterian">
+                        <div class="label">Revenue Cycle Analyst<br>NewYork–Presbyterian</div>
+                    </div>
+                    
+                    <!-- IQVIA dot -->
+                    <div class="dot blue" id="blue-dot" data-job-target="iqvia">
+                        <img src="images/IQVIA.png" alt="IQVIA">
+                        <div class="label">Data Analyst / Consultant<br>IQVIA, Boston MA</div>
+                    </div>
+                    
+                    <!-- NYP Senior Revenue Cycle Analyst dot -->
+                    <div class="dot red-small1" id="red-small1-dot" data-job-target="srca">
+                        <img src="images/NYP.jpg" alt="NewYork-Presbyterian">
+                        <div class="label">Senior Revenue Cycle Analyst<br>NewYork–Presbyterian</div>
+                    </div>
+                    
+                    <!-- NYP BI Developer dot -->
+                    <div class="dot red2" id="red2-dot" data-job-target="bid">
+                        <img src="images/NYP.jpg" alt="NewYork-Presbyterian">
+                        <div class="label">BI Developer, Data Strategy<br>NewYork–Presbyterian</div>
+                    </div>
+                    
+                    <!-- NYP Engineer dot -->
+                    <div class="dot red-small2" id="red-small2-dot" data-job-target="eng">
+                        <img src="images/NYP.jpg" alt="NewYork-Presbyterian">
+                        <div class="label">Engineer / Data Literacy Assoc.<br>NewYork–Presbyterian</div>
+                    </div>
+                </div>
+                <!-- End Timeline Animation HTML -->
+            </div>
+            
+            <div class="scrollable-content">
+                <!-- Current Experience Section -->
+                <div>
+                    <div class="section-label">Current Experience</div>
+                    <div class="horizontal-scroll-container">
+                        <div class="card card-large">
+                            <img class="logo-badge" src="images/NYP.jpg" alt="NewYork-Presbyterian Logo">
+                            <div class="role-progression">
+                                <!-- Data Scientist Role -->
+                                <div class="role-item">
+                                    <div class="role-connector">
+                                        <div class="role-dot"></div>
+                                        <div class="role-line"></div>
+                                    </div>
+                                    <div class="role-details" data-job-target="eng"> <!-- Corrected target for Engineer -->
+                                        <div class="experience-header">
+                                            <div class="experience-title">Engineer / Data Literacy Associate</div>
+                                            <div class="experience-date">Jan 2025 - Present</div>
+                                        </div>
+                                        <div class="experience-company" style="margin-top: 4px;">NewYork–Presbyterian Hospital</div>
+                                        <div class="experience-description" style="margin-top: 8px;">
+                                            <ul>
+                                                <li>Develop and implement a machine learning predictive model in Python to predict healthcare reimbursement likelihood, enhancing vendor referral efficiency and data-driven decision-making within NYP’s Revenue Cycle Department</li>
+                                                <li>Projected to reduce unnecessary vendor referrals by 30%, increase reimbursement rates on referred cases by 15%, and potentially save ~$500,000 annually through optimized vendor agreements and reduced operational costs</li>
+                                                <li>Engineer in-house LLMs leveraging RAG framework and vector-based retrieval to assist front-end users in navigating proprietary data models, data definitions, and dashboards</li>
+                                                <li>Create a full-stack web resource (HTML, CSS, Javascript) that aggregates all Access-to-Care department data, integrating a custom chatbot trained on department-specific documentation and data models</li>
+                                                <li>Scale tool & model across multiple teams and departments, facilitating broader organizational adoption and enhancing enterprise-wide efficiency</li>
+                                                <li>Worked in agile sprints to rapidly develop, test, and deploy chatbot models with data literacy programs</li>
+                                                <li>Fine-tune open-source models (Gemma & Llama) on proprietary data</li>
+                                                <li>Transition of Tableau dashboards to Microsoft PowerBI, including visualization overhaul as well as translation of calculations to DAX format</li>
+                                                <li>Champion a data-driven culture by deploying organization-wide data literacy and AI upskilling programs, focusing on predictive analytics, machine learning, and data visualization</li>
+                                                <li>Partner with Clinical and IT teams to identify high-impact use cases for artificial intelligence, including natural language processing (NLP), deep learning, and computer vision applications</li>
+                                                <li>Lead training workshops and curate digital resources to empower staff in leveraging big data, advanced analytics, and AI tools for data-informed decisions</li>
+                                                <li>Serve as a strategic advisor on AI/ML innovations and emerging technologies such as augmented intelligence and automated data workflows, providing leadership insights for scalable AI solutions</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- BI Developer Role -->
+                                <div class="role-item">
+                                    <div class="role-connector">
+                                        <div class="role-dot"></div>
+                                        <!-- No line for the last item -->
+                                    </div>
+                                    <div class="role-details" data-job-target="bid"> <!-- Added target for BI Dev -->
+                                        <div class="experience-header">
+                                            <div class="experience-title">Business Intelligence Developer, Data Strategy</div>
+                                            <div class="experience-date">Apr 2022 - Jan 2025</div>
+                                        </div>
+                                        <div class="experience-company" style="margin-top: 4px;">NewYork–Presbyterian Hospital</div>
+                                        <div class="experience-description" style="margin-top: 8px;">
+                                            <ul>
+                                                <li>Rollout in-house data warehousing initiative, ‘JupiterGOLD’, along with manage proper data governance policy</li>
+                                                <li>Establish standard practices and templates for all reporting tables</li>
+                                                <li>Build in-query error reporting with QA checks delivered via email to database administrators</li>
+                                                <li>Create checklist for table creation, production server requirements, and data mart/data source standards</li>
+                                                <li>Designed snowflake schema architecture within JupiterGOLD data warehouse to normalize complex Epic Clarity hierarchies, enabling efficient cross-domain analysis of clinical and operational data</li>
+                                                <li>Redesign and maintain backend SQL code for enterprise-wide Palliative Care dashboard, comprising of both clinical and non-clinical data</li>
+                                                <li>Utilize Epic Clarity data model for custom reporting on various enterprise initiatives (i.e., Opioid guideline monitoring, Parkinson’s patient registry, Press Ganey score assessment)</li>
+                                                <li>Collaborate on the creation of a shared resource guide & formal documentation for all in-house data projects, scripts, and dashboards</li>
+                                                <li>Communicate with organizational stakeholders on business case for each report</li>
+                                                <li>Ensure proper QA/QC procedures are formalized and checked</li>
+                                                <li>Establish a working list of FAQs and other communication documents via SharePoint (white papers, etc)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card card-large" data-job-target="iqvia"> <!-- Added target for IQVIA -->
+                            <img class="logo-badge" src="images/IQVIA.png" alt="IQVIA Logo">
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <div class="experience-title">Data Analyst / Consultant</div>
+                                    <div class="experience-date">Jan 2021 - Present</div>
+                                </div>
+                                <div class="experience-company">IQVIA, Boston MA (Remote)</div>
+                                <div class="experience-description">
+                                    <ul>
+                                        <li>Perform descriptive and diagnostic analytics highlighting historical trends and KPIs for pharmaceutical business reviews</li>
+                                        <li>Present year-end as well as quarterly business reviews to high-profile clients (Pfizer, Novartis, AbbVie, etc.)</li>
+                                        <li>Build and manage close relationships with clients providing them with customized analytics, reports, and presentations</li>
+                                        <li>Employ Microsoft PowerBI for the automation of reports and building of dashboards for clients</li>
+                                        <li>Build machine learning forecasting models tailored to each product, brand, and client; utilize Prophet and Plotly</li>
+                                        <li>Manage and lead 3 analysts; head Machine Learning & Forecasting initiative within PAAS</li>
+                                        <li>Automate Accumulator and Maximizer Solutions with SPROCs (Stored Procedures), reducing concurrent server load and manual analyst querying by 90%</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Can add more current experience cards here -->
+                    </div>
+                </div>
+                
+                <!-- Previous Experience Section -->
+                <div>
+                    <div class="section-label">Previous Experience</div>
+                    <div class="horizontal-scroll-container">
+                        <div class="card card-wide">
+                            <img class="logo-badge" src="images/NYP.jpg" alt="NewYork-Presbyterian Logo">
+                            <div class="role-progression">
+                                <!-- Senior Role -->
+                                <div class="role-item">
+                                    <div class="role-connector">
+                                        <div class="role-dot"></div>
+                                        <div class="role-line"></div>
+                                    </div>
+                                    <div class="role-details" data-job-target="srca"> <!-- Added target for Sr RCA -->
+                                        <div class="experience-header">
+                                            <div class="experience-title">Senior Revenue Cycle Analyst</div>
+                                            <div class="experience-date">May 2021 - Apr 2022</div>
+                                        </div>
+                                        <div class="experience-company" style="margin-top: 4px;">NewYork–Presbyterian Hospital</div>
+                                        <div class="experience-description" style="margin-top: 8px;">
+                                            <ul>
+                                                <li>Automate financial reports and analysis of monthly finances for 9 hospitals using Tableau dashboards</li>
+                                                <li>Collaborate with enterprise data warehouse, data governance, and business teams on data quality issues</li>
+                                                <li>Organize complex data modeling, data manipulation, and visualizations for numerous revenue cycle projects</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Analyst Role -->
+                                <div class="role-item">
+                                    <div class="role-connector">
+                                        <div class="role-dot"></div>
+                                        <!-- No line for the last item -->
+                                    </div>
+                                    <div class="role-details" data-job-target="rca"> <!-- Added target for RCA -->
+                                        <div class="experience-header">
+                                            <div class="experience-title">Revenue Cycle Analyst</div>
+                                            <div class="experience-date">Jul 2019 - May 2021</div>
+                                        </div>
+                                        <div class="experience-company" style="margin-top: 4px;">NewYork–Presbyterian Hospital</div>
+                                        <div class="experience-description" style="margin-top: 8px;">
+                                            <ul>
+                                                <li>Lead transition of monthly financial report generation from Excel into Python</li>
+                                                <li>Utilize Pandas, NumPy, and PETL to create and generate cleaner data pipelines and reports</li>
+                                                <li>Calculate key financial performance metrics (KPIs), including NCR, RAO, and TPRR</li>
+                                                <li>Convert a 3-day manual process into a 30-minute automated process, reducing time by greater than 90%</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card card-wide" data-job-target="icl"> <!-- Added target for ICL -->
+                            <img class="logo-badge" src="images/ICL.png" alt="ICL Logo">
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <div class="experience-title">Administrative Manager</div>
+                                    <div class="experience-date">Oct 2018 - Jul 2019</div>
+                                </div>
+                                <div class="experience-company">ICL, Brooklyn NY</div>
+                                <div class="experience-description">
+                                    <ul>
+                                        <li>Help open new East New York Hub; participate in crucial initial processes and structuring of operations</li>
+                                        <li>Manage healthcare facility of 200+ staff housing clinics and offices, as well as oversee day-to-day operations</li>
+                                        <li>Lead daily conferences to collaborate on issues & goals; communicate regularly with executive team on company vision</li>
+                                        <li>Create, maintain, and interpret analytical building reports from the BMS (Building Management System)</li>
+                                        <li>Create, design, and implement Temperature Reporting System (TRS) backend and UI & Intrasite Homepage for both the tracking and analysis of staff moral as well as improving communication and systematic information flow</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Consulting Experience Section -->
+                <div id="consulting-experience-section">
+                    <div class="section-label">Consulting Experience</div>
+                    <div class="horizontal-scroll-container">
+                        <div class="card">
+                            <img class="logo-badge" src="images/Beezwax.jpeg" alt="Beezwax Logo">
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <div class="experience-title">Analytics Consultant</div>
+                                    <div class="experience-date">Nov 2022 - Jun 2023</div>
+                                </div>
+                                <div class="experience-company">Beezwax Datatools Inc.</div>
+                                <div class="experience-description">
+                                    <ul>
+                                        <li>Work closely with clients to create tailored analytic solutions to improve business processes</li>
+                                        <li>Help clients understand their business better by identifying trends in the data</li>
+                                        <li>Tailor analytics, dashboards, and visualizations to personalize business solutions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <img class="logo-badge" src="images/Temple.jpeg" alt="Temple University Logo">
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <div class="experience-title">Tableau Developer</div>
+                                    <div class="experience-date">Jun 2022 - Dec 2022</div>
+                                </div>
+                                <div class="experience-company">Temple University (Contract)</div>
+                                <div class="experience-description">
+                                    <ul>
+                                        <li>Construct university dashboards for university president and provosts</li>
+                                        <li>Design multi-page views for financial, academic/educational, athletic performance, and comparative trends</li>
+                                        <li>Calculate and derive custom KPIs for university operations</li>
+                                        <li>Assist with Integrated Postsecondary Education Data System (IPEDS) data submission</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <img class="logo-badge" src="images/maginative.jpeg" alt="Maginative Logo">
+                            <div class="experience-card">
+                                <div class="experience-header">
+                                    <div class="experience-title">Consultant</div>
+                                    <div class="experience-date">Mar 2021 - Present</div>
+                                </div>
+                                <div class="experience-company">maginative, Boston MA</div>
+                                <div class="experience-description">
+                                    <ul>
+                                        <li>Create survey response dashboard for The American International School of Muscat</li>
+                                        <li>Develop Google Analytics custom dashboard for Relay Graduate School of Education</li>
+                                        <li>Perform data audit for Raven360, including analyzing existing data tools</li>
+                                        <li>Propose structural data governance toolset for enhanced data capture</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education & Skills Section -->
+                <div id="education-skills-section">
+                    <div class="section-label">Education & Skills</div>
+                    <div class="horizontal-scroll-container">
+                        <div class="card">
+                            <img class="logo-badge" src="images/Hofstra.png" alt="Hofstra University Logo">
+
+                            <div class="card-section-title">Education</div>
+                            
+                            <div class="experience-card">
+                                <div class="experience-title">Master of Health Administration (MHA)</div>
+                                <div class="experience-date">May 2018</div>
+                                <div class="experience-company">Hofstra University</div>
+                            </div>
+                            
+                            <div class="experience-card" style="margin-top: 16px;">
+                                <div class="experience-title">Bachelor of Science in Health Science (BS)</div>
+                                <div class="experience-date">May 2016</div>
+                                <div class="experience-company">Hofstra University</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-section-title">Technical Skills</div>
+                            
+                            <div class="skills-list">
+                                <div class="skill-tag">SQL</div>
+                                <div class="skill-tag" id="python-skill-tag">Python</div>
+                                <span class="tooltip-text python-tooltip"> <!-- Moved tooltip outside, added specific class -->
+                                    <strong>Key Packages:</strong><br>
+                                    Pandas, NumPy<br>
+                                    Scikit-learn<br>
+                                    TensorFlow, PyTorch<br>
+                                    Matplotlib, Seaborn, Plotly
+                                </span>
+                                <div class="skill-tag">Tableau</div>
+                                <div class="skill-tag">Power BI</div>
+                                <div class="skill-tag">Data Science</div>
+                                <div class="skill-tag">Business Intelligence</div>
+                                <div class="skill-tag">Machine Learning</div>
+                                <div class="skill-tag">Data Governance</div>
+                                <div class="skill-tag">Epic EHR</div>
+                                <div class="skill-tag">Excel</div>
+                                <div class="skill-tag">R</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card"> <!-- Removed card-wide class -->
+                            <div class="card-section-title">Certifications</div>
+                            
+                            <div class="certifications-list">
+                                <div class="cert-item">
+                                    <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                    </svg>
+                                    <div>
+                                        <div class="cert-title">Tableau Certified Data Analyst</div>
+                                        <div class="cert-issuer">Tableau</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="cert-item">
+                                    <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
+                                    </svg>
+                                    <div>
+                                        <div class="cert-title">Microsoft Office Specialist (MOS)</div>
+                                        <div class="cert-issuer">Excel 2016 & Advanced Excel 2016</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="cert-item">
+                                    <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 8l6-3-6-3v18l6-3-6-3"></path>
+                                        <path d="M4 5h2"></path>
+                                        <path d="M6 12H4"></path>
+                                        <path d="M4 19h2"></path>
+                                    </svg>
+                                    <div>
+                                        <div class="cert-title">Machine Learning by Stanford University</div>
+                                        <div class="cert-issuer">Coursera</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="cert-item">
+                                    <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="16 18 22 12 16 6"></polyline>
+                                        <polyline points="8 6 2 12 8 18"></polyline>
+                                    </svg>
+                                    <div>
+                                        <div class="cert-title">Python & SQL (Advanced)</div>
+                                        <div class="cert-issuer">HackerRank</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Professional Memberships Card Moved Here -->
+                        <div class="card">
+                            <div class="card-section-title">Professional Memberships</div>
+                            
+                            <div class="certifications-list">
+                                <div class="cert-item">
+                                    <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                    <div>
+                                        <div class="cert-title">Upsilon Phi Delta Honor Society</div>
+                                        <div class="cert-issuer">Association of University Programs in Health Administration</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="cert-item">
+                                    <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                    <div>
+                                        <div class="cert-title">Healthcare Leaders of New York (HLNY)</div>
+                                        <div class="cert-issuer">Chapter of The American College of Healthcare Executives</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="cert-item">
+                                    <svg class="cert-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                    <div id="related-projects-section">
+                                        <div class="cert-title">Future Healthcare Leaders</div>
+                                        <div class="cert-issuer">Hofstra University</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- New Related Projects Section -->
+                <div id="related-projects-section">
+                    <div class="section-label">Related Projects</div>
+                    <div class="horizontal-scroll-container">
+                        <!-- Project 1 Card -->
+                        <div class="card">
+                            <div class="experience-card">
+                                <div class="experience-title">Healthcare Analytics Dashboard</div>
+                                <div class="experience-description">
+                                    <p>Objective: Visualize key patient outcome and resource metrics. Concept: Tableau dashboards integrating clinical/operational data.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 2 Card -->
+                        <div class="card">
+                            <div class="experience-card">
+                                <div class="experience-title">Predictive Modeling for Patient Flow</div>
+                                <div class="experience-description">
+                                    <p>Objective: Optimize hospital staffing via admission prediction. Concept: Python ML models using patient flow data.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Cards moved to Fun Projects section -->
+                    </div>
+                </div>
+
+                <!-- Fun Projects Section -->
+                <div id="fun-projects-section">
+                    <div class="section-label">Fun Projects</div>
+                    <div class="horizontal-scroll-container">
+                        <!-- Project 3 Card (Simulator) -->
+                        <div class="card">
+                            <div class="experience-card">
+                                <div class="experience-title project-link" data-modal-target="simulator-modal">3D Ball Simulator</div>
+                                <div class="experience-description">
+                                    <p><strong>What:</strong> An interactive web simulation with 3D balls; complete with gravity, colisions, and explosions.</p>
+                                    <p><strong>How:</strong> Using a Three.js simulation that incorporates gravity, collision detection, and user interaction (both for mouse and touch).</p>
+                                    <p><strong>Why:</strong> Because it's fun. And to put some Three.js into practice.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 Card (FlowField) -->
+                         <div class="card">
+                            <div class="experience-card">
+                                <div id="flowfield-project" class="experience-title project-link" data-modal-target="flowfield-modal">FlowField (Particle Simulation)</div>
+                                <div class="experience-description">
+                                    <p><strong>What:</strong> A visual simulation displaying numerous small particles moving across the screen, their paths influenced by underlying, interactive force fields.</p>
+                                    <p><strong>How:</strong> Implementing an HTML5 Canvas API simulation featuring interactive force fields that affect particle movement.</p>
+                                    <p><strong>Why:</strong> To make pretty, dynamic patterns. It was a fun exercise in using the Canvas API to create interactive visuals - and turned out more fun to play with than I anticipated.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 5 Card (NYC Monte Carlo) -->
+                        <div class="card">
+                            <div class="experience-card">
+                                <div class="experience-title project-link" data-modal-target="nyc-montecarlo-modal">Manhattan Monte Carlo: Simulating Optimal Walking Routes</div>
+                                <div class="experience-description">
+                                    <p><strong>What:</strong> A simulation that models walking routes on a grid (i.e., Manhattan streets) and uses probability (Monte Carlo method) to find the fastest paths, considering potential delays like traffic lights.</p>
+                                    <p><strong>How:</strong> Employing a Monte Carlo simulation method to compare the efficiency of fixed walking paths versus paths that adapt based on conditions (like traffic lights).</p>
+                                    <p><strong>Why:</strong> A real-life scenario of figuring out what the fastest, on average, method to walk to work was.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Stock Dashboard Card -->
+                        <div class="card">
+                            <div class="experience-card">
+                                <div class="experience-title project-link" data-modal-target="static-dashboard-modal">Stock Dashboard</div>
+                                <div class="experience-description">
+                                    <p><strong>What:</strong> A basic sample page designed as a dashboard displaying stock market indicators, using static sample data.</p>
+                                    <p><strong>How:</strong> Creating a front-end dashboard using HTML, CSS, and JavaScript, having it fed by live refreshable data feeds using YFinance (though this example is static).</p>
+                                    <p><strong>Why:</strong> The real version is a version I use to this day for my personal investing purposes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>© 2023 Michael Brancazio | <a href="#" style="color: inherit;">Click here to see the developer behind this dashboard</a></p>
+        </footer>
+    </div>
+    <!-- Modal Structure -->
+    <div id="simulator-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <iframe src="3d-ball-simulator.html" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+    </div>
+    <!-- Modal JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all elements that trigger modals
+            const modalTriggers = document.querySelectorAll('.project-link[data-modal-target]');
+            
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const modalId = trigger.getAttribute('data-modal-target');
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
+                        modal.style.display = "block";
+                        // Attempt to focus the iframe inside the modal
+                        const iframe = modal.querySelector('iframe');
+                        if (iframe) {
+                            iframe.focus();
+                        }
+                    }
+                });
+            });
+
+            // Get all close buttons
+            const closeButtons = document.querySelectorAll('.close-button');
+            
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.closest('.modal');
+                    if (modal) {
+                        modal.style.display = "none";
+                    }
+                });
+            });
+
+            // Close modal if user clicks outside of the modal content
+            window.addEventListener('click', (event) => {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = "none";
+                }
+            });
+        });
+    </script>
+    <!-- Image Swap JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profilePic = document.getElementById('profile-picture');
+            const avatarDiv = profilePic.closest('.avatar'); // Get the parent avatar div
+            const originalSrc = 'images/headshot.jpeg'; // Assuming this is the default
+            const styledSrc = 'images/styled.png';
+            const shockedSrc = 'images/shocked.png';
+            let isShocked = false; // Track if shocked image is shown
+            let shockTimeout; // To store the timeout ID
+
+            if (profilePic) {
+                profilePic.style.cursor = 'pointer'; // Indicate it's interactive
+
+                profilePic.addEventListener('dblclick', () => {
+                    // Clear any existing timeout to prevent reverting too early if double-clicked again quickly
+                    clearTimeout(shockTimeout);
+
+                    profilePic.src = shockedSrc; // Show shocked image
+                    profilePic.style.objectPosition = 'center 20%'; // Adjust image position within the frame (shifted down)
+                    isShocked = true;
+
+                    // Set a timeout to revert back to the original image
+                    shockTimeout = setTimeout(() => {
+                        profilePic.src = originalSrc;
+                        profilePic.style.objectPosition = 'center center'; // Reset image position
+                        isShocked = false;
+                    }, 200); // Revert after 200 milliseconds (0.2 seconds)
+                });
+            } else {
+                console.error("Profile picture element not found!");
+            }
+        });
+
+        // Wait for the DOM to be fully loaded before running halo logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Cursor Halo Logic
+            const halo = document.querySelector('.cursor-halo');
+            let haloInitialized = false; // Flag to track first mouse move
+
+            if (halo) {
+                halo.style.opacity = '0'; // Ensure it starts hidden via JS too
+
+                document.addEventListener('mousemove', (e) => {
+                    // Use requestAnimationFrame for smoother animation
+                    requestAnimationFrame(() => {
+                        halo.style.left = `${e.clientX}px`;
+                        halo.style.top = `${e.clientY}px`;
+
+                        // Make visible only on the first move
+                        if (!haloInitialized) {
+                            halo.style.opacity = '1';
+                            haloInitialized = true;
+                        }
+                    });
+                });
+
+                // Hide halo when mouse leaves the window body
+                document.body.addEventListener('mouseleave', () => {
+                    if (haloInitialized) { // Only hide if it was ever shown
+                       halo.style.opacity = '0';
+                    }
+                });
+
+                // Show halo when mouse re-enters the window body
+                document.body.addEventListener('mouseenter', () => {
+                    if (haloInitialized) { // Only show if it was already initialized
+                       halo.style.opacity = '1';
+                    }
+                });
+
+            } else {
+                console.error("Cursor halo element not found!");
+            }
+        });
+    </script>
+    <!-- "What have you done?" section removed -->
+    <!-- NYC Walking Sim Modal Structure -->
+    <div id="flowfield-modal" class="modal"> <!-- Removed specific class -->
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <iframe src="flowfield-simulation.html" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+    </div>
+    
+    <!-- NYC Monte Carlo Modal Structure -->
+    <div id="nyc-montecarlo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <iframe src="nyc-montecarlo.html" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <!-- Static Stock Dashboard Modal Structure -->
+    <div id="static-dashboard-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <iframe src="Stock Dashboard/static_dashboard.html" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+    </div>
+    <!-- Removed tooltip JavaScript -->
+    <div class="cursor-halo"></div> <!-- Halo element -->
+
+    <script>
+        // Filter Box & Highlighting Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBox = document.getElementById('filter-box');
+            const clearButton = document.getElementById('clear-filter-btn');
+            const keywordButtons = document.querySelectorAll('.filter-keyword');
+            // Define the areas where text should be highlighted (excluding profile card)
+            const contentAreas = document.querySelectorAll('.experience-description p, .experience-description li, .experience-title, .experience-company, .cert-title, .skill-tag');
+            let originalContent = new Map(); // Store original innerHTML of content areas
+
+            // Store original content before any highlighting
+            contentAreas.forEach((area, index) => {
+                originalContent.set(area, area.innerHTML);
+            });
+
+            // 1. Fade in filter box
+            setTimeout(() => {
+                if (filterBox) {
+                    filterBox.classList.add('visible');
+                }
+            }, 1000); // 1 second delay
+
+            // Function to remove existing highlights
+            function removeHighlights() {
+                contentAreas.forEach(area => {
+                    if (originalContent.has(area)) {
+                        area.innerHTML = originalContent.get(area);
+                    }
+                });
+                if (clearButton) clearButton.style.display = 'none';
+                if (filterBox) filterBox.classList.remove('filter-active'); // Remove active class
+
+                // Scroll all cards back to the top
+                const allCards = document.querySelectorAll('.scrollable-content .card');
+                allCards.forEach(card => {
+                    card.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+
+            // Function to add highlights
+            function addHighlight(keyword, highlightTerm) {
+                removeHighlights(); // Clear previous highlights first
+                const highlightClass = `highlight highlight-${highlightTerm.toLowerCase().replace(/\s+/g, '')}`;
+                let regex;
+                // Use a specific regex for "AI" to match whole word or start of word, outside tags
+                if (keyword.toUpperCase() === 'AI') {
+                    // \b matches word boundary. Matches "AI", "AI.", "AI/ML", but not "train"
+                    // (?<!<[^>]*) negative lookbehind to ensure not inside a tag opening
+                    // (?![^<]*>) negative lookahead to ensure not inside a tag closing
+                    regex = new RegExp(`(?<!<[^>]*)\\b${keyword}\\b(?![^<]*>)`, 'gi');
+                } else if (keyword === 'Power BI') {
+                    // Specific regex for "Power BI" to match with or without space, outside tags
+                    regex = new RegExp(`(?<!<[^>]*)(Power ?BI)(?![^<]*>)`, 'gi');
+                } else {
+                    // Original regex for other keywords (ensuring not inside tags)
+                    regex = new RegExp(`(?<!<[^>]*)${keyword}(?![^<]*>)`, 'gi');
+                }
+
+                contentAreas.forEach(area => {
+                    const originalHTML = originalContent.get(area);
+                    if (originalHTML) {
+                        // Check if the keyword exists in the original HTML (respecting the regex rules)
+                        if (regex.test(originalHTML)) {
+                            // If found, wrap the entire original content of the area
+                            area.innerHTML = `<span class="${highlightClass}">${originalHTML}</span>`;
+                        } else {
+                            // If not found, ensure it's restored to original (in case a previous filter highlighted it)
+                            area.innerHTML = originalHTML;
+                        }
+                    }
+                });
+
+                if (clearButton) clearButton.style.display = 'block'; // Show clear button
+                if (filterBox) filterBox.classList.add('filter-active'); // Add active class
+            }
+
+            // 2. Add event listeners to keyword buttons
+            keywordButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const keyword = button.getAttribute('data-keyword');
+                    // Use data-highlight-term if available (for multi-word terms needing a single CSS class), otherwise use the keyword itself
+                    const highlightTerm = button.getAttribute('data-highlight-term') || keyword;
+                    addHighlight(keyword, highlightTerm);
+
+                    // --- Generic Filter Scroll Logic ---
+                    // After highlighting, find cards containing highlights and scroll them
+                    const allCards = document.querySelectorAll('.scrollable-content .card');
+                    allCards.forEach(card => {
+                        // Find the first highlighted element *within this specific card*
+                        const firstHighlightInCard = card.querySelector('.highlight');
+                        if (firstHighlightInCard) {
+                            // Calculate the position of the highlight relative to the card's content area
+                            const cardStyles = window.getComputedStyle(card);
+                            const cardPaddingTop = parseInt(cardStyles.paddingTop, 10);
+                            // Calculate scroll position to bring the element near the top, accounting for padding
+                            const targetScrollTop = firstHighlightInCard.offsetTop - cardPaddingTop;
+
+                            // Scroll the card's content area smoothly
+                            card.scrollTo({
+                                top: targetScrollTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                    // --- End Generic Filter Scroll Logic ---
+                });
+            });
+
+            // 3. Add event listener to clear button
+            if (clearButton) {
+                clearButton.addEventListener('click', removeHighlights);
+            }
+
+           // Timeline Animation Logic
+           const progress = document.getElementById('progress');
+           const startDot = document.getElementById('start-dot');
+           const greenDot = document.getElementById('green-dot');
+           const redDot = document.getElementById('red-dot');
+           const blueDot = document.getElementById('blue-dot');
+           const redSmall1Dot = document.getElementById('red-small1-dot');
+           const red2Dot = document.getElementById('red2-dot');
+           const redSmall2Dot = document.getElementById('red-small2-dot');
+           
+           // Start the animation sequence after a delay
+           setTimeout(startTimelineAnimation, 1500); // Delay start slightly more
+           
+           function startTimelineAnimation() {
+               if (!progress || !startDot || !greenDot || !redDot || !blueDot || !redSmall1Dot || !red2Dot || !redSmall2Dot) {
+                   console.error("One or more timeline elements not found!");
+                   return; // Exit if elements are missing
+               }
+               // Progress to green dot
+               progress.style.width = '7%';
+               setTimeout(() => {
+                   // When using images, we need to make the parent div visible
+                   greenDot.style.opacity = '1';
+                   greenDot.classList.add('pulse');
+                   startDot.classList.remove('pulse'); // Stop pulsing the start dot
+                   
+                   // Wait at green dot
+                   setTimeout(() => {
+                       greenDot.classList.remove('pulse');
+                       
+                       // Progress to first red dot
+                       progress.style.width = '15%';
+                       setTimeout(() => {
+                           redDot.style.opacity = '1';
+                           redDot.classList.add('pulse');
+                           
+                           // Progress to blue dot
+                           setTimeout(() => {
+                               redDot.classList.remove('pulse');
+                               progress.style.width = '34%';
+                               setTimeout(() => {
+                                   blueDot.style.opacity = '1';
+                                   blueDot.classList.add('pulse');
+                                   
+                                   // Progress to small red dot 1
+                                   setTimeout(() => {
+                                       blueDot.classList.remove('pulse');
+                                       progress.style.width = '40%';
+                                       setTimeout(() => {
+                                           redSmall1Dot.style.opacity = '1';
+                                           // No pulse for smaller dots? Or add if desired: redSmall1Dot.classList.add('pulse');
+                                           
+                                           // Progress to second red dot
+                                           setTimeout(() => {
+                                               // if (redSmall1Dot.classList.contains('pulse')) redSmall1Dot.classList.remove('pulse');
+                                               progress.style.width = '50%';
+                                               setTimeout(() => {
+                                                   red2Dot.style.opacity = '1';
+                                                   red2Dot.classList.add('pulse');
+                                                   
+                                                   // Progress to small red dot 2
+                                                   setTimeout(() => {
+                                                       red2Dot.classList.remove('pulse');
+                                                       progress.style.width = '87%';
+                                                       setTimeout(() => {
+                                                           redSmall2Dot.style.opacity = '1';
+                                                            // No pulse for smaller dots? Or add if desired: redSmall2Dot.classList.add('pulse');
+                                                           
+                                                           // Progress to end with fade
+                                                           setTimeout(() => {
+                                                               // if (redSmall2Dot.classList.contains('pulse')) redSmall2Dot.classList.remove('pulse');
+                                                               progress.classList.add('fade-end');
+                                                               progress.style.width = '100%';
+                                                           }, 1000); // Time before fading starts
+                                                       }, 750); // Time for small dot 2 to appear
+                                                   }, 1500); // Wait time at red dot 2
+                                               }, 1250); // Time for red dot 2 to appear
+                                           }, 1000); // Wait time at small red dot 1
+                                       }, 750); // Time for small red dot 1 to appear
+                                   }, 1500); // Wait time at blue dot
+                               }, 1250); // Time for blue dot to appear
+                           }, 1500); // Wait time at red dot 1
+                       }, 1250); // Time for red dot 1 to appear
+                   }, 1500); // Wait time at green dot
+               }, 1250); // Time for green dot to appear
+           }
+          // End Timeline Animation Logic
+
+          // Timeline Dot Hover to Card Effect Logic
+          const timelineDots = document.querySelectorAll('.timeline-container .dot[data-job-target]');
+
+          timelineDots.forEach(dot => {
+              dot.addEventListener('mouseenter', () => {
+                  const targetId = dot.getAttribute('data-job-target');
+                  // Find the target card: Adjust selector based on where data-job-target was added
+                  // It was added to role-details for roles within the same card, and to the card itself for others.
+                  let targetCard = document.querySelector(`.card[data-job-target="${targetId}"]`);
+                  if (!targetCard) {
+                       // If not found on card, check within role-details divs
+                       const targetDetail = document.querySelector(`.role-details[data-job-target="${targetId}"]`);
+                       if (targetDetail) {
+                           targetCard = targetDetail.closest('.card'); // Find the parent card
+                       }
+                  }
+
+                  if (targetCard) {
+                      targetCard.classList.add('hover-effect');
+                      // Optional: Scroll the card into view if needed
+                      // targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                  }
+              });
+
+              dot.addEventListener('mouseleave', () => {
+                  const targetId = dot.getAttribute('data-job-target');
+                   let targetCard = document.querySelector(`.card[data-job-target="${targetId}"]`);
+                   if (!targetCard) {
+                       const targetDetail = document.querySelector(`.role-details[data-job-target="${targetId}"]`);
+                       if (targetDetail) {
+                           targetCard = targetDetail.closest('.card');
+                       }
+                   }
+                  if (targetCard) {
+                      targetCard.classList.remove('hover-effect');
+                  }
+              });
+          });
+          // End Timeline Dot Hover Logic
+           // End Timeline Animation Logic
+       });
+    </script>
+
+    <script>
+        // Disable right-click on profile picture
+        document.addEventListener('DOMContentLoaded', () => {
+            const profilePic = document.getElementById('profile-picture');
+            if (profilePic) {
+                profilePic.addEventListener('contextmenu', (event) => {
+                    event.preventDefault();
+                });
+            }
+        });
+    </script>
+
+    <!-- Sticky Header Scroll Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('sticky-mobile-header');
+            const profileCard = document.querySelector('.profile-card'); // The first card
+
+            if (!header || !profileCard) {
+                console.error('Sticky header or profile card element not found.');
+                return;
+            }
+
+            let profileCardBottom = 0;
+
+            function calculateProfileCardBottom() {
+                 // Recalculate on resize or load as layout might change
+                 const rect = profileCard.getBoundingClientRect();
+                 // Use pageYOffset for consistent calculation regardless of parent scrolling context
+                 profileCardBottom = rect.bottom + window.pageYOffset;
+            }
+
+            function checkHeaderVisibility() {
+                // Only run logic on mobile screens
+                if (window.innerWidth <= 768) {
+                    if (window.scrollY > profileCardBottom) {
+                        header.classList.add('visible');
+                    } else {
+                        header.classList.remove('visible');
+                    }
+                } else {
+                    // Ensure header is hidden on larger screens
+                    header.classList.remove('visible');
+                }
+            }
+
+            // Initial calculation
+            calculateProfileCardBottom();
+
+            // Check visibility on scroll
+            window.addEventListener('scroll', checkHeaderVisibility, { passive: true });
+
+            // Recalculate and check visibility on resize
+            window.addEventListener('resize', () => {
+                calculateProfileCardBottom();
+                checkHeaderVisibility();
+            }, { passive: true });
+
+            // Initial check in case the page loads already scrolled down on mobile
+             checkHeaderVisibility();
+        });
+    </script>
+    <!-- End Sticky Header Scroll Logic -->
+
+    <!-- Load Matter.js just before the script that uses it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <!-- Chain Dark Mode Toggle Script -->
+    <script>
+        // Wrap in DOMContentLoaded to ensure elements exist before script runs
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const body = document.body;
+            const chainContainer = document.getElementById('chain-container');
+
+            if (!chainContainer || typeof Matter === 'undefined') {
+                console.error("Chain container or Matter.js not found!");
+                return; // Put the return back to stop execution on error
+            }
+
+            // --- Matter.js Setup ---
+            const Engine = Matter.Engine;
+            const Render = Matter.Render;
+            const Runner = Matter.Runner;
+            const Composites = Matter.Composites;
+            const Constraint = Matter.Constraint;
+            const MouseConstraint = Matter.MouseConstraint;
+            const Mouse = Matter.Mouse;
+            const Composite = Matter.Composite;
+            const Bodies = Matter.Bodies;
+            const Events = Matter.Events;
+
+            const engine = Engine.create({ enableSleeping: true, positionIterations: 10 });
+            const world = engine.world;
+            engine.gravity.y = 4.2; // Slightly less gravity for a lighter feel
+
+            // Get container dimensions
+            let containerWidth = chainContainer.offsetWidth;
+            let containerHeight = chainContainer.offsetHeight;
+
+            const render = Render.create({
+                element: chainContainer, // Render inside the container
+                engine: engine,
+                options: {
+                    width: containerWidth,
+                    height: containerHeight,
+                    wireframes: false,
+                    background: 'transparent', // Make background transparent
+                    pixelRatio: window.devicePixelRatio || 1 // Adjust for high DPI screens
+                }
+            });
+
+            Render.run(render);
+            const runner = Runner.create();
+            Runner.run(runner, engine);
+
+            // --- Chain Creation (Adapted) ---
+            const group = Matter.Body.nextGroup(true);
+            const segmentLength = 5; // Shorter segments for smaller container
+            const segmentRadius = 7;  // Smaller radius
+            const numSegments = 5;    // Fewer segments
+            const stiffness = 0.7;
+            const damping = 0.2; // Increased damping
+            let chainStartX = containerWidth / 2;
+            const chainStartY = -10; // Start slightly above the container
+
+            // Define colors based on theme
+            let segmentFill = 'rgb(170, 170, 170)'; // Default light mode (Opaque)
+            let segmentStroke = 'rgb(200, 200, 200)'; // Opaque
+            let constraintStroke = 'rgba(102, 102, 102, 0.7)';
+            let chain = null; // Declare chain variable
+
+            function updateChainColors() {
+                const isDarkMode = body.classList.contains('dark-mode');
+                segmentFill = isDarkMode ? 'rgb(100, 100, 100)' : 'rgb(170, 170, 170)'; // Opaque
+                segmentStroke = isDarkMode ? 'rgb(150, 150, 150)' : 'rgb(200, 200, 200)'; // Opaque
+                constraintStroke = isDarkMode ? 'rgba(150, 150, 150, 0.7)' : 'rgba(102, 102, 102, 0.7)';
+
+                if (chain && chain.bodies) {
+                    chain.bodies.forEach(body => {
+                        body.render.fillStyle = segmentFill;
+                        body.render.strokeStyle = segmentStroke;
+                    });
+                }
+                 if (chain && chain.constraints) {
+                    chain.constraints.forEach(constraint => {
+                        if (constraint.render) constraint.render.strokeStyle = constraintStroke;
+                    });
+                 }
+                 // Also update the anchor constraint if it exists and has render properties
+                 const anchorConstraint = world.constraints.find(c => c.label === 'AnchorConstraint');
+                 if (anchorConstraint && anchorConstraint.render) {
+                     // Anchor constraint might not need color change, but included for completeness
+                 }
+            }
+
+            function createChain() {
+                 // Clear existing chain if any
+                if (chain) {
+                    Composite.remove(world, chain);
+                    // Also remove the anchor constraint specifically if it exists
+                    const anchorConstraint = world.constraints.find(c => c.label === 'AnchorConstraint');
+                    if (anchorConstraint) Composite.remove(world, anchorConstraint);
+                }
+
+                chainStartX = containerWidth / 2; // Recalculate start X
+
+                chain = Composites.stack(chainStartX, chainStartY, numSegments, 1, 5, 5, function(x, y) {
+                    return Bodies.circle(x, y, segmentRadius, {
+                        collisionFilter: { group: group },
+                        frictionAir: 0.1, // Increased air friction
+                        slop: 0.1,
+                        render: {
+                            fillStyle: segmentFill,
+                            strokeStyle: segmentStroke,
+                            lineWidth: 1
+                        }
+                    });
+                });
+
+                Composites.chain(chain, 0.5, 0, -0.5, 0, {
+                    stiffness: stiffness,
+                    length: segmentLength * 0.8, // Slightly shorter constraint length
+                    damping: damping,
+                    render: {
+                        type: 'line',
+                        strokeStyle: constraintStroke,
+                        lineWidth: 1
+                    }
+                });
+
+                const firstSegment = chain.bodies[0];
+                const anchor = { x: chainStartX, y: 0 };
+                const anchorConstraint = Constraint.create({
+                    label: 'AnchorConstraint', // Add label for easier finding
+                    pointA: anchor,
+                    bodyB: firstSegment,
+                    pointB: { x: 0, y: -segmentRadius }, // Connect to top edge of first segment
+                    stiffness: 0.9, // Stiffer anchor
+                    length: 5, // Allow a tiny bit of slack
+                     render: { visible: false } // Hide anchor constraint line
+                });
+
+                Composite.add(world, [chain, anchorConstraint]);
+                updateChainColors(); // Apply correct colors immediately
+            }
+
+
+            // --- Interaction & Dark Mode Toggle ---
+            const mouse = Mouse.create(render.canvas);
+            const mouseConstraint = MouseConstraint.create(engine, {
+                mouse: mouse,
+                constraint: {
+                    stiffness: 0.1,
+                    render: { visible: false }
+                }
+            });
+
+            Composite.add(world, mouseConstraint);
+            render.mouse = mouse;
+
+            let draggedChainBody = null;
+            let startPullX = 0; // Store initial X for pull limit
+            let startPullY = 0; // Store initial Y for pull limit
+            const maxPullDistance = 150; // Maximum pixels to pull from start point
+            const pullThreshold = maxPullDistance * 0.7; // Set threshold relative to max pull (e.g., 70%)
+            let themeToggledThisDrag = false;
+            let initialBodyClasses = body.className; // Store initial classes
+
+            // Apply saved theme on load & set initial colors
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'light') {
+                 body.classList.remove('dark-mode'); // Explicitly light mode
+            } else {
+                 body.classList.add('dark-mode'); // Default to dark if 'dark' or null/undefined
+            }
+            // Don't call updateChainColors here, wait for createChain
+
+            Events.on(mouseConstraint, 'startdrag', (event) => {
+                if (chain.bodies.includes(event.body)) {
+                    draggedChainBody = event.body;
+                    startPullX = mouse.position.x; // Record start X
+                    startPullY = mouse.position.y; // Record start Y
+                    themeToggledThisDrag = false; // Reset toggle flag
+                    chainContainer.style.cursor = 'grabbing'; // Change cursor
+                }
+            });
+
+            Events.on(mouseConstraint, 'enddrag', (event) => {
+                if (draggedChainBody && event.body === draggedChainBody) {
+                    draggedChainBody = null;
+                    chainContainer.style.cursor = 'grab'; // Restore cursor
+                }
+            });
+
+            Events.on(engine, 'beforeUpdate', () => {
+                if (draggedChainBody) {
+                    const currentPullVerticalDistance = mouse.position.y - startPullY;
+
+                    // --- Theme Toggle Logic (Check First) ---
+                    if (!themeToggledThisDrag && currentPullVerticalDistance > pullThreshold) {
+                        body.classList.toggle('dark-mode');
+                        updateChainColors(); // Update colors immediately after toggle
+                        localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+                        themeToggledThisDrag = true; // Prevent multiple toggles per drag
+
+                        // Optional: Vibrate on toggle
+                        if (navigator.vibrate) {
+                            navigator.vibrate(50); // Short vibration
+                        }
+                    }
+
+                    // --- Max Pull Distance Logic (Check Second) ---
+                    // Check if still dragging
+                    if (draggedChainBody) {
+                        const deltaX = mouse.position.x - startPullX;
+                        const deltaY = mouse.position.y - startPullY;
+                        const currentDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                        if (currentDistance > maxPullDistance) {
+                            // Release the drag
+                            mouse.button = -1; // Simulate mouse up for Matter.js internal state
+                            draggedChainBody = null; // Stop processing this drag
+                            chainContainer.style.cursor = 'grab'; // Restore cursor
+
+                            // Optional: Vibrate on release
+                            if (navigator.vibrate) {
+                                 navigator.vibrate(20); // Short vibration for feedback
+                            }
+                            // No return needed here, just stop processing the drag state
+                        }
+                    }
+                }
+            });
+
+             // --- Fit to container & Handle Resize ---
+            function fitRendererToContainer() {
+                containerWidth = chainContainer.offsetWidth;
+                containerHeight = chainContainer.offsetHeight;
+
+                render.options.width = containerWidth;
+                render.options.height = containerHeight;
+                render.canvas.width = containerWidth * (window.devicePixelRatio || 1);
+                render.canvas.height = containerHeight * (window.devicePixelRatio || 1);
+                 render.canvas.style.width = containerWidth + 'px';
+                 render.canvas.style.height = containerHeight + 'px';
+
+                Render.lookAt(render, {
+                    min: { x: 0, y: 0 },
+                    max: { x: containerWidth, y: containerHeight }
+                });
+
+                 // Recreate the chain to reposition it correctly
+                 createChain();
+            }
+
+            // Initial setup
+            fitRendererToContainer(); // Call initially to set up size and create chain
+
+            // Debounced resize handler
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(fitRendererToContainer, 150); // Adjust debounce time as needed
+            }, { passive: true });
+
+
+            // --- Explicit Touch Event Listener for Max Pull ---
+            // Add this listener directly to the canvas for potentially more reliable touch handling
+            if (render.canvas) {
+                render.canvas.addEventListener('touchmove', (event) => {
+                    if (draggedChainBody) {
+                        // Get the first touch point
+                        const touch = event.touches[0];
+                        if (touch) {
+                            // Calculate position relative to the canvas, similar to how mouse.position works
+                            const canvasBounds = render.canvas.getBoundingClientRect();
+                            const touchX = touch.clientX - canvasBounds.left;
+                            const touchY = touch.clientY - canvasBounds.top;
+
+                            const deltaX = touchX - startPullX;
+                            const deltaY = touchY - startPullY;
+                            const currentDistance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                             // DEBUG LOG for TouchMove
+                             // console.log(`TouchMove Check: start=(${startPullX.toFixed(1)}, ${startPullY.toFixed(1)}), current=(${touchX.toFixed(1)}, ${touchY.toFixed(1)}), distance=${currentDistance.toFixed(1)}, max=${maxPullDistance}`);
+
+
+                            if (currentDistance > maxPullDistance) {
+                                // Release the drag (mirroring logic in beforeUpdate)
+                                mouse.button = -1;
+                                draggedChainBody = null;
+                                chainContainer.style.cursor = 'grab';
+                                if (navigator.vibrate) {
+                                     navigator.vibrate(20);
+                                }
+                                // Prevent default touch behavior like scrolling when limit is hit
+                                event.preventDefault();
+                            }
+                        }
+                    }
+                }, { passive: false }); // Use passive: false to allow preventDefault
+            } else {
+                 console.error("Render canvas not found for attaching touch listener.");
+            }
+
+
+        }); // End of DOMContentLoaded wrapper
+    </script>
+    <!-- End Chain Dark Mode Toggle Script -->
+
+    <!-- Trigger deployment -->
+    <!-- Chain Container HTML -->
+    <div id="chain-container"></div>
+    <!-- End Chain Container HTML -->
+
+    <!-- Haptic Feedback on Mobile Scroll Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if the Vibration API is supported
+            if (!('vibrate' in navigator)) {
+                console.log("Vibration API not supported on this browser.");
+                return;
+            }
+
+            const cards = document.querySelectorAll('.card');
+            const vibratedCards = new Set(); // Keep track of cards that have triggered vibration
+
+            let lastScrollY = window.scrollY;
+
+            window.addEventListener('scroll', () => {
+                // Only run on mobile screens
+                if (window.innerWidth <= 768) {
+                    const viewportCenter = window.innerHeight / 2;
+                    const currentScrollY = window.scrollY;
+                    const scrollingDown = currentScrollY > lastScrollY;
+
+                    cards.forEach((card, index) => {
+                        const rect = card.getBoundingClientRect();
+
+                        // Trigger vibration when scrolling down and card top passes viewport center
+                        // Also ensure card is still somewhat visible (bottom > 0)
+                        if (scrollingDown && rect.top < viewportCenter && rect.bottom < window.innerHeight && rect.bottom > 0 && !vibratedCards.has(index)) {
+                            navigator.vibrate(1); // 1ms vibration
+                            vibratedCards.add(index);
+                        }
+                        // Reset card status if it scrolls back up above the center
+                        else if (!scrollingDown && rect.top >= viewportCenter && vibratedCards.has(index)) {
+                             vibratedCards.delete(index);
+                        }
+                        // Also reset if card goes completely out of view above the top edge when scrolling up
+                        else if (!scrollingDown && rect.bottom < 0 && vibratedCards.has(index)) {
+                            vibratedCards.delete(index);
+                        }
+                    });
+
+                    lastScrollY = currentScrollY;
+                } else {
+                    // Clear the set if not on mobile view anymore
+                    vibratedCards.clear();
+                }
+            }, { passive: true }); // Use passive listener for scroll performance
+        });
+    </script>
+    <!-- End Haptic Feedback Script -->
+
+    <!-- FAB JavaScript -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterFab = document.getElementById('filter-fab');
+        const filterBox = document.getElementById('filter-box');
+        const clearFilterBtn = document.getElementById('clear-filter-btn');
+        
+        if (filterFab && filterBox) {
+            // Toggle filter panel when FAB is clicked
+            filterFab.addEventListener('click', () => {
+                filterFab.classList.toggle('active');
+                filterBox.classList.toggle('mobile-visible');
+                
+                // Also toggle clear button visibility if it exists and is currently displayed
+                // Check the computed style to see if it's actually visible ('block')
+                if (clearFilterBtn && window.getComputedStyle(clearFilterBtn).display === 'block') {
+                    clearFilterBtn.classList.toggle('mobile-visible');
+                }
+                
+                // Update ARIA attributes for accessibility
+                const isExpanded = filterBox.classList.contains('mobile-visible');
+                filterFab.setAttribute('aria-expanded', isExpanded);
+            });
+            
+            // Close filter box when a filter is selected on mobile
+            const filterKeywords = document.querySelectorAll('.filter-keyword');
+            filterKeywords.forEach(keyword => {
+                keyword.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        // Add mobile-visible class to clear button when a filter is active
+                        if (clearFilterBtn) {
+                            // Check if the clear button should be visible (i.e., a filter is active)
+                            // This relies on the filter logic adding 'filter-active' to the filter box
+                            if (filterBox.classList.contains('filter-active')) {
+                                clearFilterBtn.classList.add('mobile-visible');
+                            } else {
+                                // If no filter is active after click (e.g., toggling off), hide it
+                                clearFilterBtn.classList.remove('mobile-visible');
+                            }
+                        }
+                        
+                        // Keep filter box open to see multiple filters (optional)
+                        // Comment these lines if you want it to stay open
+                        setTimeout(() => {
+                            filterBox.classList.remove('mobile-visible');
+                            filterFab.classList.remove('active');
+                            filterFab.setAttribute('aria-expanded', 'false'); // Update ARIA on close
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Handle clear filter button on mobile
+            if (clearFilterBtn) {
+                // We need to find the original handler added by the filter logic script
+                // Assuming the original handler is attached via addEventListener, not onclick
+                // This part is tricky without knowing exactly how the original handler is attached.
+                // Let's modify the existing clear button logic slightly.
+                
+                // Find the existing listener (this is complex and might not work reliably)
+                // A better approach might be to modify the original filter script to cooperate.
+                // For now, let's just add our mobile behavior.
+                
+                clearFilterBtn.addEventListener('click', (e) => {
+                    // The original filter logic should handle clearing highlights and hiding the button on desktop.
+                    // We add the mobile-specific closing behavior.
+                    if (window.innerWidth <= 768) {
+                        // Hide the mobile-specific visibility class
+                        clearFilterBtn.classList.remove('mobile-visible');
+                        // Close the filter box and deactivate FAB
+                        filterBox.classList.remove('mobile-visible');
+                        filterFab.classList.remove('active');
+                        filterFab.setAttribute('aria-expanded', 'false'); // Update ARIA on close
+                    }
+                    // Note: The original filter logic should still run to clear highlights.
+                });
+            }
+            
+            // Set initial ARIA attributes
+            filterFab.setAttribute('aria-expanded', 'false');
+            filterFab.setAttribute('aria-controls', 'filter-box');
+        }
+    });
+    </script>
+
+</body>
+
+<!-- JAVASCRIPT - Add this just before the closing </body> tag -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all cards
+    const cards = document.querySelectorAll('.card');
+    
+    cards.forEach(card => {
+        // Skip if already processed
+        if (card.querySelector('.card-scrollable-content')) return;
+        
+        // Get the logo badge if it exists
+        const logoBadge = card.querySelector('.logo-badge');
+        
+        // Create a wrapper for all content except the logo badge
+        const scrollableContainer = document.createElement('div');
+        scrollableContainer.className = 'card-scrollable-content';
+        
+        // Clone all children of the card except the logo badge
+        const cardChildren = Array.from(card.childNodes).filter(node => {
+            // Skip the logo badge
+            return !(node === logoBadge);
+        });
+        
+        // Move all children (except logo badge) into the scrollable container
+        cardChildren.forEach(child => {
+            scrollableContainer.appendChild(child);
+        });
+        
+        // Append the scrollable container to the card
+        card.appendChild(scrollableContainer);
+    });
+    
+    // Optional: Scroll to top when filter keywords are clicked
+    const filterKeywords = document.querySelectorAll('.filter-keyword');
+    if (filterKeywords.length > 0) {
+        filterKeywords.forEach(keyword => {
+            keyword.addEventListener('click', () => {
+                // Reset scroll position of all card content containers
+                const scrollableContainers = document.querySelectorAll('.card-scrollable-content');
+                scrollableContainers.forEach(container => {
+                    container.scrollTop = 0;
+                });
+            });
+        });
+    }
+    
+    // Optional: Detect if scrollbar is needed and add class for styling
+    const scrollableContainers = document.querySelectorAll('.card-scrollable-content');
+    scrollableContainers.forEach(container => {
+        // Check if content is taller than container
+        if (container.scrollHeight > container.clientHeight) {
+            container.closest('.card').classList.add('needs-scroll');
+        }
+    });
+});
+</script>
+</html>

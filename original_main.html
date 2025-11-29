@@ -52,14 +52,12 @@
         }
         
         .container {
-            /* max-width: 1440px; Removed */
-            margin: 0;
-            /* padding-left: 72px; Removed */
-            width: 100%; /* Make container full width */
-            min-height: 100vh; /* Make container full height */
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            /* align-items: center; Removed */
+            align-items: center;
         }
         
         .section {
@@ -76,8 +74,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-left: 72px; /* Re-apply left padding */
-            width: 600px; /* Decreased width */
+            padding: 0 72px;
+            width: 450px;
             overflow: auto;
             z-index: 1;
         }
@@ -86,17 +84,17 @@
             display: flex;
             flex-direction: column;
             gap: 24px;
-            padding: 32px 0 32px 72px; /* Added left padding */
+            padding: 32px 0;
             height: 100vh;
-            overflow-y: auto; /* Enable vertical scrolling */
-            width: calc(100% - 600px); /* Adjusted for new fixed column width */
+            overflow: visible;
+            width: calc(100% - 450px);
         }
         
         .horizontal-scroll-container {
             display: flex;
             flex-direction: row;
             gap: 16px;
-            padding: 10px 16px 0 16px; /* Added 10px top padding */
+            padding: 0 16px;
             overflow-x: auto;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
@@ -118,7 +116,7 @@
             gap: 24px;
             height: auto;
             width: 100%;
-            max-width: 500px; /* Increased max-width further */
+            max-width: 420px;
         }
         
         .profile-header {
@@ -163,7 +161,6 @@
             height: 8px;
             border-radius: 50%;
             background-color: #34D399;
-            animation: pulse 3s infinite cubic-bezier(0.66, 0, 0, 1); /* Slowed down pulse animation */
         }
         
         .profile-description {
@@ -207,8 +204,8 @@
         }
         
         .card-wide {
-            min-width: 520px;
-            width: 520px;
+            min-width: 420px;
+            width: 420px;
         }
         
         .card-large {
@@ -277,7 +274,7 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-            max-width: 500px; /* Match profile-card max-width */
+            max-width: 450px;
         }
         
         .link-row {
@@ -393,11 +390,11 @@
         @media (max-width: 1024px) {
             .fixed-column {
                 padding: 0 48px;
-                width: 400px; /* Decreased width for medium screens */
+                width: 400px;
             }
             
             .scrollable-content {
-                width: calc(100% - 400px); /* Adjusted for medium screens */
+                width: calc(100% - 400px);
             }
         }
         
@@ -451,17 +448,6 @@
             
             .footer {
                 position: relative;
-            }
-        }
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); /* #34D399 with alpha */
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(52, 211, 153, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
             }
         }
     </style>
@@ -528,42 +514,16 @@
                         <div class="card card-large">
                             <div class="experience-card">
                                 <div class="experience-header">
-                                    <div> <!-- Wrapper for titles -->
-                                        <div class="experience-title">Data Scientist / Data Literacy Associate</div>
-                                        <div class="experience-title" style="margin-top: 4px;">Business Intelligence Developer of Data Strategy</div>
-                                    </div>
-                                    <div style="text-align: right;"> <!-- Wrapper for dates, aligned right -->
-                                        <div class="experience-date">Jan 2025 - Present</div>
-                                        <div class="experience-date" style="margin-top: 4px;">Apr 2022 - Jan 2025</div>
-                                    </div>
+                                    <div class="experience-title">Business Intelligence Developer</div>
+                                    <div class="experience-date">Apr 2022 - Present</div>
                                 </div>
-                                <div class="experience-company">NewYork–Presbyterian Hospital, New York NY</div>
+                                <div class="experience-company">NewYork–Presbyterian Hospital</div>
                                 <div class="experience-description">
                                     <ul>
-                                        <li>Develop and implement a machine learning predictive model in Python to predict healthcare reimbursement likelihood, enhancing vendor referral efficiency and data-driven decision-making within NYP’s Revenue Cycle Department</li>
-                                        <li>Projected to reduce unnecessary vendor referrals by 30%, increase reimbursement rates on referred cases by 15%, and potentially save ~$500,000 annually through optimized vendor agreements and reduced operational costs</li>
-                                        <li>Engineer in-house LLMs leveraging RAG framework and vector-based retrieval to assist front-end users in navigating proprietary data models, data definitions, and dashboards</li>
-                                        <li>Create a full-stack web resource (HTML, CSS, Javascript) that aggregates all Access-to-Care department data, integrating a custom chatbot trained on department-specific documentation and data models</li>
-                                        <li>Scale tool & model across multiple teams and departments, facilitating broader organizational adoption and enhancing enterprise-wide efficiency</li>
-                                        <li>Worked in agile sprints to rapidly develop, test, and deploy chatbot models with data literacy programs</li>
-                                        <li>Fine-tune open-source models (Gemma & Llama) on proprietary data</li>
                                         <li>Redesign and maintain backend SQL code for enterprise-wide Palliative Care dashboard, comprising of both clinical and non-clinical data</li>
-                                        <li>Utilize Epic Clarity data model for custom reporting on various enterprise initiatives (i.e., Opioid guideline monitoring, Parkinson’s patient registry, Press Ganey score assessment)</li>
+                                        <li>Utilize Epic Clarity data model for custom reporting on various enterprise initiatives (i.e., Opioid guideline monitoring, Parkinson's patient registry, Press Ganey score assessment)</li>
                                         <li>Collaborate on the creation of a shared resource guide & formal documentation for all in-house data projects, scripts, and dashboards</li>
-                                        <li>Communicate with organizational stakeholders on business case for each report</li>
-                                        <li>Ensure proper QA/QC procedures are formalized and checked</li>
-                                        <li>Establish a working list of FAQs and other communication documents via SharePoint (white papers, etc)</li>
-                                        <li>Rollout in-house data warehousing initiative, ‘JupiterGOLD’, along with manage proper data governance policy</li>
-                                        <li>Establish standard practices and templates for all reporting tables</li>
-                                        <li>Build in-query error reporting with QA checks delivered via email to database administrators</li>
-                                        <li>Create checklist for table creation, production server requirements, and data mart/data source standards</li>
-                                        <li>Transition of Tableau dashboards to Microsoft PowerBI, including visualization overhaul as well as translation of calculations to DAX format</li>
-                                        <li>Implemented star schema design for Palliative Care data marts, creating optimized fact and dimension tables that reduced query complexity while maintaining granular patient outcome metrics</li>
-                                        <li>Designed snowflake schema architecture within JupiterGOLD data warehouse to normalize complex Epic Clarity hierarchies, enabling efficient cross-domain analysis of clinical and operational data</li>
-                                        <li>Champion a data-driven culture by deploying organization-wide data literacy and AI upskilling programs, focusing on predictive analytics, machine learning, and data visualization</li>
-                                        <li>Partner with Clinical and IT teams to identify high-impact use cases for artificial intelligence, including natural language processing (NLP), deep learning, and computer vision applications</li>
-                                        <li>Lead training workshops and curate digital resources to empower staff in leveraging big data, advanced analytics, and AI tools for data-informed decisions</li>
-                                        <li>Serve as a strategic advisor on AI/ML innovations and emerging technologies such as augmented intelligence and automated data workflows, providing leadership insights for scalable AI solutions</li>
+                                        <li>Rollout in-house data warehousing initiative, 'JupiterGOLD', along with manage proper data governance policy</li>
                                     </ul>
                                 </div>
                             </div>
@@ -868,7 +828,7 @@
         </div>
         
         <footer class="footer">
-            <p>© 2023 Michael Brancazio | <a href="#" style="color: inherit;">Click here to see the developer behind this dashboard</a></p>
+            <p>© 2023 Michael Brancazio | Portfolio Template</p>
         </footer>
     </div>
 </body>
